@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-   *     CONFIGURAÇÃO GERAL
-   *  ======================= */
+     CONFIGURAÇÃO GERAL
+  ======================= */
 
   const DATASETS = {
-    frases: 'data/frases.json',
-    palavras: 'data/palavras.json'
+    frases: './data/frases.json',
+    palavras: './data/palavras.json'
   };
 
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* =======================
-   *     ELEMENTOS DO DOM
-   *  ======================= */
+     ELEMENTOS DO DOM
+  ======================= */
 
   const foreignText = document.getElementById('foreignText');
   const translationText = document.getElementById('translationText');
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleDatasetBtn = document.getElementById('toggleDataset');
 
   /* =======================
-   *     EVENTOS
-   *  ======================= */
+     EVENTOS
+  ======================= */
 
   document.getElementById('playBtn').onclick = speak;
   document.getElementById('micBtn').onclick = listen;
@@ -48,35 +48,54 @@ document.addEventListener('DOMContentLoaded', () => {
   loadDataset();
 
   /* =======================
-   *     DATASET
-   *  ======================= */
+     DATASET
+  ======================= */
 
   async function loadDataset() {
     try {
-      const res = await fetch(DATASETS[datasetKey]);
+      const url = DATASETS[datasetKey];
+      console.log('Carregando dataset:', url);
+
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
       data = await res.json();
+      console.log('Dataset carregado:', data);
+
+      if (!Array.isArray(data) || !data.length) {
+        foreignText.textContent = 'Dataset vazio ou inválido.';
+        return;
+      }
+
       nextSentence();
       updateUI();
     } catch (e) {
       foreignText.textContent = 'Erro ao carregar dataset.';
-      console.error(e);
+      console.error('Erro no dataset:', e);
     }
   }
 
   function weightedRandom(items) {
     const pool = [];
     items.forEach(item => {
-      const w = stats.weights[item.ES] || 1;
+      const key = item.ES;
+      const w = stats.weights[key] || 1;
       for (let i = 0; i < w; i++) pool.push(item);
     });
-      return pool[Math.floor(Math.random() * pool.length)];
+    return pool[Math.floor(Math.random() * pool.length)];
   }
 
   function nextSentence() {
-    if (!data.length) return;
+    if (!data || !data.length) return;
 
     const filtered = data.filter(d => d.CEFR === stats.level);
     current = weightedRandom(filtered.length ? filtered : data);
+
+    if (!current || !current.ES || !current.PTBR) {
+      foreignText.textContent = 'Item inválido no dataset.';
+      console.warn('Item inválido:', current);
+      return;
+    }
 
     foreignText.textContent = current.ES;
     translationText.textContent = current.PTBR;
@@ -85,29 +104,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-   *     ÁUDIO (TTS)
-   *  ======================= */
+     ÁUDIO (TTS)
+  ======================= */
 
   function speak() {
     if (!current) return;
+
     const u = new SpeechSynthesisUtterance(current.ES);
     u.lang = 'es-ES';
+
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
   }
 
   /* =======================
-   *     PRONÚNCIA (STT)
-   *  ======================= */
+     PRONÚNCIA (STT)
+  ======================= */
 
   function normalize(text) {
     return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-zñ']/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zñ']/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
   }
 
   function similarity(a, b) {
@@ -135,12 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-   *     LISTEN — iOS SAFE
-   *  ======================= */
+     LISTEN — SAFARI iOS OK
+  ======================= */
 
   function listen() {
     const SpeechRecognition =
-    window.SpeechRecognition || window.webkitSpeechRecognition;
+      window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
       feedback.textContent = 'Reconhecimento de voz não suportado.';
@@ -148,14 +169,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const rec = new SpeechRecognition();
-
     rec.lang = 'es-ES';
     rec.continuous = false;
     rec.interimResults = false;
     rec.maxAlternatives = 1;
 
     rec.onstart = () => {
-      feedback.textContent = '🎙️ Ouvindo... fale agora';
+      feedback.textContent = '🎙️ Ouvindo...';
     };
 
     rec.onerror = e => {
@@ -168,20 +188,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = normalize(current.ES);
 
       const score = similarity(spoken, target);
-
       foreignText.innerHTML = highlightDifferences(target, spoken);
 
       if (score >= 0.75) {
         feedback.textContent = '✅ Boa pronúncia geral';
         stats.hits++;
         stats.weights[current.ES] =
-        Math.max(1, (stats.weights[current.ES] || 1) - 1);
+          Math.max(1, (stats.weights[current.ES] || 1) - 1);
         adjustLevel(true);
       } else {
         feedback.textContent = '❌ Atenção às palavras destacadas';
         stats.errors++;
         stats.weights[current.ES] =
-        (stats.weights[current.ES] || 1) + 2;
+          (stats.weights[current.ES] || 1) + 2;
         adjustLevel(false);
       }
 
@@ -191,16 +210,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rec.onend = () => {
       if (feedback.textContent.includes('Ouvindo')) {
-        feedback.textContent = '⚠️ Não detectei fala. Tente novamente.';
+        feedback.textContent = '⚠️ Nenhuma fala detectada.';
       }
     };
 
-    rec.start();
+    rec.start(); // obrigatório para Safari iOS
   }
 
   /* =======================
-   *     PROGRESSÃO CEFR
-   *  ======================= */
+     PROGRESSÃO CEFR
+  ======================= */
 
   function adjustLevel(success) {
     let i = levels.indexOf(stats.level);
@@ -210,8 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-   *     UI / ESTADO
-   *  ======================= */
+     UI / ESTADO
+  ======================= */
 
   function toggleTranslation() {
     translationText.classList.toggle('hidden');
