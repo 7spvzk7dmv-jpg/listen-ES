@@ -1,0 +1,5004 @@
+[
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hola",
+    "PTBR": "olá",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "adiós",
+    "PTBR": "adeus",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "sí",
+    "PTBR": "sim",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "no",
+    "PTBR": "não",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "por favor",
+    "PTBR": "por favor",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "gracias",
+    "PTBR": "obrigado",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "hombre",
+    "PTBR": "homem",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mujer",
+    "PTBR": "mulher",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "niño",
+    "PTBR": "criança",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "familia",
+    "PTBR": "família",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "amigo",
+    "PTBR": "amigo",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "casa",
+    "PTBR": "casa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "puerta",
+    "PTBR": "porta",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "mesa",
+    "PTBR": "mesa",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "silla",
+    "PTBR": "cadeira",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "agua",
+    "PTBR": "água",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "pan",
+    "PTBR": "pão",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "leche",
+    "PTBR": "leite",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "día",
+    "PTBR": "dia",
+    "CEFR": "A1"
+  },
+  {
+    "ESP": "noche",
+    "PTBR": "noite",
+    "CEFR": "A1"
+  },
+    {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "trabajo",
+    "PTBR": "trabalho",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ciudad",
+    "PTBR": "cidade",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "viaje",
+    "PTBR": "viagem",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "dinero",
+    "PTBR": "dinheiro",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "tiempo",
+    "PTBR": "tempo",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "pregunta",
+    "PTBR": "pergunta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "respuesta",
+    "PTBR": "resposta",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "problema",
+    "PTBR": "problema",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "historia",
+    "PTBR": "história",
+    "CEFR": "A2"
+  },
+  {
+    "ESP": "ejemplo",
+    "PTBR": "exemplo",
+    "CEFR": "A2"
+  },
+
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "decisión",
+    "PTBR": "decisão",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "experiencia",
+    "PTBR": "experiência",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "situación",
+    "PTBR": "situação",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "resultado",
+    "PTBR": "resultado",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "opinión",
+    "PTBR": "opinião",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "responsabilidad",
+    "PTBR": "responsabilidade",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "desarrollo",
+    "PTBR": "desenvolvimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "objetivo",
+    "PTBR": "objetivo",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "conocimiento",
+    "PTBR": "conhecimento",
+    "CEFR": "B1"
+  },
+  {
+    "ESP": "progreso",
+    "PTBR": "progresso",
+    "CEFR": "B1"
+  },
+    {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "circunstancia",
+    "PTBR": "circunstância",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "consecuencia",
+    "PTBR": "consequência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "perspectiva",
+    "PTBR": "perspectiva",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "probabilidad",
+    "PTBR": "probabilidade",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evidencia",
+    "PTBR": "evidência",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "criterio",
+    "PTBR": "critério",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "estrategia",
+    "PTBR": "estratégia",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "impacto",
+    "PTBR": "impacto",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "evaluación",
+    "PTBR": "avaliação",
+    "CEFR": "B2"
+  },
+  {
+    "ESP": "prioridad",
+    "PTBR": "prioridade",
+    "CEFR": "B2"
+  },
+
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "razonamiento",
+    "PTBR": "raciocínio",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "metodología",
+    "PTBR": "metodologia",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "sostenibilidad",
+    "PTBR": "sustentabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "paradigma",
+    "PTBR": "paradigma",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "hipótesis",
+    "PTBR": "hipótese",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "coherencia",
+    "PTBR": "coerência",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "viabilidad",
+    "PTBR": "viabilidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "complejidad",
+    "PTBR": "complexidade",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "interdisciplinar",
+    "PTBR": "interdisciplinar",
+    "CEFR": "C1"
+  },
+  {
+    "ESP": "abordaje",
+    "PTBR": "abordagem",
+    "CEFR": "C1"
+  }
+]
