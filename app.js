@@ -1,21 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-     RESOLUÇÃO CORRETA DO PATH (GITHUB PAGES)
+     PATH SEGURO (GITHUB PAGES)
   ======================= */
 
   const BASE_PATH = window.location.pathname.replace(/\/[^/]*$/, '');
-
-  console.log('BASE_PATH detectado:', BASE_PATH);
 
   const DATASETS = {
     frases: `${BASE_PATH}/data/frases.json`,
     palavras: `${BASE_PATH}/data/palavras.json`
   };
-
-  /* =======================
-     CONFIGURAÇÃO GERAL
-  ======================= */
 
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
@@ -56,22 +50,35 @@ document.addEventListener('DOMContentLoaded', () => {
   loadDataset();
 
   /* =======================
+     NORMALIZAÇÃO DO ITEM
+  ======================= */
+
+  function normalizeItem(item) {
+    return {
+      es: item.ES || item.ESP || item.SPANISH || '',
+      pt: item.PTBR || item.PT || item.PORTUGUESE || '',
+      level: item.CEFR || item.LEVEL || 'A1'
+    };
+  }
+
+  /* =======================
      DATASET
   ======================= */
 
   async function loadDataset() {
     try {
-      const url = DATASETS[datasetKey];
-      console.log('Carregando dataset:', url);
-
-      const res = await fetch(url, { cache: 'no-store' });
+      const res = await fetch(DATASETS[datasetKey], { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      data = await res.json();
-      console.log('Dataset carregado com sucesso:', data.length, 'itens');
+      const raw = await res.json();
 
-      if (!Array.isArray(data) || data.length === 0) {
-        foreignText.textContent = 'Dataset vazio ou inválido.';
+      data = raw
+        .map(normalizeItem)
+        .filter(i => i.es && i.pt);
+
+      if (!data.length) {
+        foreignText.textContent = 'Dataset carregado, mas sem itens válidos.';
+        console.error('Itens originais:', raw);
         return;
       }
 
@@ -79,34 +86,25 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUI();
     } catch (e) {
       foreignText.textContent = 'Erro ao carregar dataset.';
-      console.error('Falha ao carregar dataset:', e);
+      console.error(e);
     }
   }
 
   function weightedRandom(items) {
     const pool = [];
     items.forEach(item => {
-      const key = item.ES;
-      const w = stats.weights[key] || 1;
+      const w = stats.weights[item.es] || 1;
       for (let i = 0; i < w; i++) pool.push(item);
     });
     return pool[Math.floor(Math.random() * pool.length)];
   }
 
   function nextSentence() {
-    if (!data.length) return;
-
-    const filtered = data.filter(d => d.CEFR === stats.level);
+    const filtered = data.filter(d => d.level === stats.level);
     current = weightedRandom(filtered.length ? filtered : data);
 
-    if (!current || !current.ES || !current.PTBR) {
-      foreignText.textContent = 'Item inválido no dataset.';
-      console.warn('Registro inválido:', current);
-      return;
-    }
-
-    foreignText.textContent = current.ES;
-    translationText.textContent = current.PTBR;
+    foreignText.textContent = current.es;
+    translationText.textContent = current.pt;
     translationText.classList.add('hidden');
     feedback.textContent = '';
   }
@@ -117,10 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function speak() {
     if (!current) return;
-
-    const u = new SpeechSynthesisUtterance(current.ES);
+    const u = new SpeechSynthesisUtterance(current.es);
     u.lang = 'es-ES';
-
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
   }
@@ -140,9 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function similarity(a, b) {
-    if (!a || !b) return 0;
-    if (a === b) return 1;
-
     let same = 0;
     for (let i = 0; i < Math.min(a.length, b.length); i++) {
       if (a[i] === b[i]) same++;
@@ -163,77 +156,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join(' ');
   }
 
-  /* =======================
-     LISTEN — SAFARI / iOS OK
-  ======================= */
-
   function listen() {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) return;
 
-    if (!SpeechRecognition) {
-      feedback.textContent = 'Reconhecimento de voz não suportado.';
-      return;
-    }
-
-    const rec = new SpeechRecognition();
+    const rec = new SR();
     rec.lang = 'es-ES';
-    rec.continuous = false;
-    rec.interimResults = false;
-    rec.maxAlternatives = 1;
-
-    rec.onstart = () => {
-      feedback.textContent = '🎙️ Ouvindo...';
-    };
-
-    rec.onerror = e => {
-      feedback.textContent = '⚠️ Erro no microfone: ' + e.error;
-    };
 
     rec.onresult = e => {
-      const spokenRaw = e.results[0][0].transcript;
-      const spoken = normalize(spokenRaw);
-      const target = normalize(current.ES);
+      const spoken = normalize(e.results[0][0].transcript);
+      const target = normalize(current.es);
 
       const score = similarity(spoken, target);
       foreignText.innerHTML = highlightDifferences(target, spoken);
 
       if (score >= 0.75) {
-        feedback.textContent = '✅ Boa pronúncia geral';
+        feedback.textContent = '✅ Boa pronúncia';
         stats.hits++;
-        stats.weights[current.ES] =
-          Math.max(1, (stats.weights[current.ES] || 1) - 1);
-        adjustLevel(true);
       } else {
-        feedback.textContent = '❌ Atenção às palavras destacadas';
+        feedback.textContent = '❌ Ajuste a pronúncia';
         stats.errors++;
-        stats.weights[current.ES] =
-          (stats.weights[current.ES] || 1) + 2;
-        adjustLevel(false);
       }
 
       saveStats();
       updateUI();
     };
 
-    rec.onend = () => {
-      if (feedback.textContent.includes('Ouvindo')) {
-        feedback.textContent = '⚠️ Nenhuma fala detectada.';
-      }
-    };
-
-    rec.start(); // chamada direta — obrigatória no Safari
-  }
-
-  /* =======================
-     PROGRESSÃO CEFR
-  ======================= */
-
-  function adjustLevel(success) {
-    let i = levels.indexOf(stats.level);
-    if (success && i < levels.length - 1) i++;
-    if (!success && i > 0) i--;
-    stats.level = levels[i];
+    rec.start();
   }
 
   /* =======================
@@ -251,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resetProgress() {
-    if (!confirm('Deseja apagar todo o progresso?')) return;
     localStorage.clear();
     location.reload();
   }
