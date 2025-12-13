@@ -1,13 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-     CONFIGURAÇÃO GERAL
+     RESOLUÇÃO CORRETA DO PATH (GITHUB PAGES)
   ======================= */
 
+  const BASE_PATH = window.location.pathname.replace(/\/[^/]*$/, '');
+
+  console.log('BASE_PATH detectado:', BASE_PATH);
+
   const DATASETS = {
-    frases: './data/frases.json',
-    palavras: './data/palavras.json'
+    frases: `${BASE_PATH}/data/frases.json`,
+    palavras: `${BASE_PATH}/data/palavras.json`
   };
+
+  /* =======================
+     CONFIGURAÇÃO GERAL
+  ======================= */
 
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
@@ -56,13 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = DATASETS[datasetKey];
       console.log('Carregando dataset:', url);
 
-      const res = await fetch(url);
+      const res = await fetch(url, { cache: 'no-store' });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       data = await res.json();
-      console.log('Dataset carregado:', data);
+      console.log('Dataset carregado com sucesso:', data.length, 'itens');
 
-      if (!Array.isArray(data) || !data.length) {
+      if (!Array.isArray(data) || data.length === 0) {
         foreignText.textContent = 'Dataset vazio ou inválido.';
         return;
       }
@@ -71,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUI();
     } catch (e) {
       foreignText.textContent = 'Erro ao carregar dataset.';
-      console.error('Erro no dataset:', e);
+      console.error('Falha ao carregar dataset:', e);
     }
   }
 
@@ -86,14 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function nextSentence() {
-    if (!data || !data.length) return;
+    if (!data.length) return;
 
     const filtered = data.filter(d => d.CEFR === stats.level);
     current = weightedRandom(filtered.length ? filtered : data);
 
     if (!current || !current.ES || !current.PTBR) {
       foreignText.textContent = 'Item inválido no dataset.';
-      console.warn('Item inválido:', current);
+      console.warn('Registro inválido:', current);
       return;
     }
 
@@ -156,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     LISTEN — SAFARI iOS OK
+     LISTEN — SAFARI / iOS OK
   ======================= */
 
   function listen() {
@@ -214,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    rec.start(); // obrigatório para Safari iOS
+    rec.start(); // chamada direta — obrigatória no Safari
   }
 
   /* =======================
