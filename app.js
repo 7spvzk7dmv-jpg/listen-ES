@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let data = [];
   let current = null;
 
+  // 🔴 REFERÊNCIA GLOBAL — CRÍTICO NO SAFARI
+  let recognition = null;
+
   let stats = JSON.parse(localStorage.getItem('stats')) || {
     level: 'A1',
     hits: 0,
@@ -58,25 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   async function loadDataset() {
-    try {
-      const res = await fetch(DATASETS[datasetKey], { cache: 'no-store' });
-      if (!res.ok) throw new Error(res.status);
+    const res = await fetch(DATASETS[datasetKey], { cache: 'no-store' });
+    const raw = await res.json();
 
-      const raw = await res.json();
-
-      data = raw.map(normalizeItem).filter(i => i.es && i.pt);
-
-      if (!data.length) {
-        foreignText.textContent = 'Dataset sem itens válidos.';
-        return;
-      }
-
-      nextSentence();
-      updateUI();
-    } catch (e) {
-      foreignText.textContent = 'Erro ao carregar dataset.';
-      console.error(e);
-    }
+    data = raw.map(normalizeItem).filter(i => i.es && i.pt);
+    nextSentence();
+    updateUI();
   }
 
   function weightedRandom(items) {
@@ -103,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
   ======================= */
 
   function speak() {
-    if (!current) return;
     const u = new SpeechSynthesisUtterance(current.es);
     u.lang = 'es-ES';
     speechSynthesis.cancel();
@@ -111,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     STT — SAFARI iOS CORRETO
+     STT — SAFARI iOS REALMENTE FUNCIONAL
   ======================= */
 
   function listen() {
@@ -122,23 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const rec = new SR();
-    rec.lang = 'es-ES';
-    rec.continuous = false;
-    rec.interimResults = false;
-    rec.maxAlternatives = 1;
+    // 🔴 encerra instância anterior
+    if (recognition) {
+      recognition.stop();
+      recognition = null;
+    }
 
-    rec.onstart = () => {
-      feedback.textContent = '🎙️ Ouvindo... fale agora';
+    // 🔴 mantém referência viva
+    recognition = new SR();
+    recognition.lang = 'es-ES';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = () => {
+      feedback.textContent = '🎙️ Ouvindo… fale agora';
     };
 
-    rec.onerror = e => {
+    recognition.onerror = e => {
       feedback.textContent = '⚠️ Erro no microfone: ' + e.error;
     };
 
-    rec.onresult = e => {
-      const spokenRaw = e.results[0][0].transcript;
-      const spoken = normalize(spokenRaw);
+    recognition.onresult = e => {
+      const spoken = normalize(e.results[0][0].transcript);
       const target = normalize(current.es);
 
       const score = similarity(spoken, target);
@@ -147,29 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
       if (score >= 0.75) {
         feedback.textContent = '✅ Boa pronúncia geral';
         stats.hits++;
-        stats.weights[current.es] =
-          Math.max(1, (stats.weights[current.es] || 1) - 1);
-        adjustLevel(true);
       } else {
         feedback.textContent = '❌ Atenção às palavras destacadas';
         stats.errors++;
-        stats.weights[current.es] =
-          (stats.weights[current.es] || 1) + 2;
-        adjustLevel(false);
       }
 
       saveStats();
       updateUI();
     };
 
-    rec.onend = () => {
-      if (feedback.textContent.includes('Ouvindo')) {
-        feedback.textContent = '⚠️ Nenhuma fala detectada.';
-      }
+    recognition.onend = () => {
+      recognition = null;
     };
 
-    // ⚠️ chamada direta — requisito absoluto do Safari iOS
-    rec.start();
+    // ⚠️ chamada direta (gesto do usuário)
+    recognition.start();
   }
 
   /* =======================
@@ -205,13 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return `<span class="text-yellow-400 underline">${w}</span>`;
       return `<span class="text-red-400 underline">${w}</span>`;
     }).join(' ');
-  }
-
-  function adjustLevel(success) {
-    let i = levels.indexOf(stats.level);
-    if (success && i < levels.length - 1) i++;
-    if (!success && i > 0) i--;
-    stats.level = levels[i];
   }
 
   function toggleTranslation() {
