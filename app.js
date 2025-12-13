@@ -36,10 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const levelText = document.getElementById('levelText');
   const toggleDatasetBtn = document.getElementById('toggleDataset');
 
-  /* =======================
-     EVENTOS
-  ======================= */
-
   document.getElementById('playBtn').onclick = speak;
   document.getElementById('micBtn').onclick = listen;
   document.getElementById('translateBtn').onclick = toggleTranslation;
@@ -50,35 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
   loadDataset();
 
   /* =======================
-     NORMALIZAÇÃO DO ITEM
+     NORMALIZAÇÃO DO DATASET
   ======================= */
 
   function normalizeItem(item) {
     return {
-      es: item.ES || item.ESP || item.SPANISH || '',
-      pt: item.PTBR || item.PT || item.PORTUGUESE || '',
+      es: item.ES || item.ESP || item.SPANISH || item.text || '',
+      pt: item.PTBR || item.PT || item.PORTUGUESE || item.translation || '',
       level: item.CEFR || item.LEVEL || 'A1'
     };
   }
 
-  /* =======================
-     DATASET
-  ======================= */
-
   async function loadDataset() {
     try {
       const res = await fetch(DATASETS[datasetKey], { cache: 'no-store' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) throw new Error(res.status);
 
       const raw = await res.json();
 
-      data = raw
-        .map(normalizeItem)
-        .filter(i => i.es && i.pt);
+      data = raw.map(normalizeItem).filter(i => i.es && i.pt);
 
       if (!data.length) {
-        foreignText.textContent = 'Dataset carregado, mas sem itens válidos.';
-        console.error('Itens originais:', raw);
+        foreignText.textContent = 'Dataset sem itens válidos.';
         return;
       }
 
@@ -110,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     ÁUDIO (TTS)
+     TTS
   ======================= */
 
   function speak() {
@@ -122,7 +111,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     PRONÚNCIA (STT)
+     STT — SAFARI iOS CORRETO
+  ======================= */
+
+  function listen() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SR) {
+      feedback.textContent = 'Reconhecimento de voz não suportado.';
+      return;
+    }
+
+    const rec = new SR();
+    rec.lang = 'es-ES';
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    rec.onstart = () => {
+      feedback.textContent = '🎙️ Ouvindo... fale agora';
+    };
+
+    rec.onerror = e => {
+      feedback.textContent = '⚠️ Erro no microfone: ' + e.error;
+    };
+
+    rec.onresult = e => {
+      const spokenRaw = e.results[0][0].transcript;
+      const spoken = normalize(spokenRaw);
+      const target = normalize(current.es);
+
+      const score = similarity(spoken, target);
+      foreignText.innerHTML = highlightDifferences(target, spoken);
+
+      if (score >= 0.75) {
+        feedback.textContent = '✅ Boa pronúncia geral';
+        stats.hits++;
+        stats.weights[current.es] =
+          Math.max(1, (stats.weights[current.es] || 1) - 1);
+        adjustLevel(true);
+      } else {
+        feedback.textContent = '❌ Atenção às palavras destacadas';
+        stats.errors++;
+        stats.weights[current.es] =
+          (stats.weights[current.es] || 1) + 2;
+        adjustLevel(false);
+      }
+
+      saveStats();
+      updateUI();
+    };
+
+    rec.onend = () => {
+      if (feedback.textContent.includes('Ouvindo')) {
+        feedback.textContent = '⚠️ Nenhuma fala detectada.';
+      }
+    };
+
+    // ⚠️ chamada direta — requisito absoluto do Safari iOS
+    rec.start();
+  }
+
+  /* =======================
+     UTILITÁRIOS
   ======================= */
 
   function normalize(text) {
@@ -156,38 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join(' ');
   }
 
-  function listen() {
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR) return;
-
-    const rec = new SR();
-    rec.lang = 'es-ES';
-
-    rec.onresult = e => {
-      const spoken = normalize(e.results[0][0].transcript);
-      const target = normalize(current.es);
-
-      const score = similarity(spoken, target);
-      foreignText.innerHTML = highlightDifferences(target, spoken);
-
-      if (score >= 0.75) {
-        feedback.textContent = '✅ Boa pronúncia';
-        stats.hits++;
-      } else {
-        feedback.textContent = '❌ Ajuste a pronúncia';
-        stats.errors++;
-      }
-
-      saveStats();
-      updateUI();
-    };
-
-    rec.start();
+  function adjustLevel(success) {
+    let i = levels.indexOf(stats.level);
+    if (success && i < levels.length - 1) i++;
+    if (!success && i > 0) i--;
+    stats.level = levels[i];
   }
-
-  /* =======================
-     UI / ESTADO
-  ======================= */
 
   function toggleTranslation() {
     translationText.classList.toggle('hidden');
