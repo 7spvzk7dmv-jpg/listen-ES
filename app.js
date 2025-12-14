@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     palavras: 'data/palavras.json'
   };
 
-  const SOURCE_LANG = 'ESP';   // chave do idioma-fonte no dataset
-  const TTS_LANG = 'es-ES';    // Text-to-Speech
-  const STT_LANG = 'es-ES';    // Speech-to-Text
+  const SOURCE_LANG = 'ESP';
+  const TTS_LANG = 'es-ES';
+  const STT_LANG = 'es-ES';
 
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     LISTEN — iOS SAFE
+     LISTEN
   ======================= */
 
   function listen() {
@@ -146,19 +146,18 @@ document.addEventListener('DOMContentLoaded', () => {
       window.SpeechRecognition || window.webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
-      feedback.textContent = 'Reconhecimento de voz não suportado neste navegador.';
+      feedback.textContent = 'Reconhecimento de voz não suportado.';
       return;
     }
 
     const rec = new SpeechRecognition();
-
     rec.lang = STT_LANG;
     rec.continuous = false;
     rec.interimResults = false;
     rec.maxAlternatives = 1;
 
     rec.onstart = () => {
-      feedback.textContent = '🎙️ Ouvindo... fale agora';
+      feedback.textContent = '🎙️ Ouvindo...';
     };
 
     rec.onerror = e => {
@@ -166,10 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     rec.onresult = e => {
-      const spokenRaw = e.results[0][0].transcript;
-      const spoken = normalize(spokenRaw);
+      const spoken = normalize(e.results[0][0].transcript);
       const target = normalize(current[SOURCE_LANG]);
-
       const score = similarity(spoken, target);
 
       sourceText.innerHTML = highlightDifferences(target, spoken);
@@ -194,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     rec.onend = () => {
       if (feedback.textContent.includes('Ouvindo')) {
-        feedback.textContent = '⚠️ Não detectei fala. Tente novamente.';
+        feedback.textContent = '⚠️ Nenhuma fala detectada.';
       }
     };
 
