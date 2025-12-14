@@ -9,13 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     palavras: 'data/palavras.json'
   };
 
+  const SOURCE_LANG = 'ESP';   // chave do idioma-fonte no dataset
+  const TTS_LANG = 'es-ES';    // Text-to-Speech
+  const STT_LANG = 'es-ES';    // Speech-to-Text
+
   const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-  let datasetKey = localStorage.getItem('dataset_es') || 'frases';
+  let datasetKey = localStorage.getItem('dataset') || 'frases';
   let data = [];
   let current = null;
 
-  let stats = JSON.parse(localStorage.getItem('stats_es')) || {
+  let stats = JSON.parse(localStorage.getItem('stats')) || {
     level: 'A1',
     hits: 0,
     errors: 0,
@@ -26,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ELEMENTOS DO DOM
   ======================= */
 
-  const spanishText = document.getElementById('spanishText');
+  const sourceText = document.getElementById('englishText');
   const translationText = document.getElementById('translationText');
   const feedback = document.getElementById('feedback');
   const hitsEl = document.getElementById('hits');
@@ -58,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       nextSentence();
       updateUI();
     } catch (e) {
-      spanishText.textContent = 'Erro ao carregar dataset.';
+      sourceText.textContent = 'Erro ao carregar dataset.';
       console.error(e);
     }
   }
@@ -66,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function weightedRandom(items) {
     const pool = [];
     items.forEach(item => {
-      const w = stats.weights[item.ES] || 1;
+      const key = item[SOURCE_LANG];
+      const w = stats.weights[key] || 1;
       for (let i = 0; i < w; i++) pool.push(item);
     });
     return pool[Math.floor(Math.random() * pool.length)];
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtered = data.filter(d => d.CEFR === stats.level);
     current = weightedRandom(filtered.length ? filtered : data);
 
-    spanishText.textContent = current.ES;
+    sourceText.textContent = current[SOURCE_LANG];
     translationText.textContent = current.PTBR;
     translationText.classList.add('hidden');
     feedback.textContent = '';
@@ -90,8 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function speak() {
     if (!current) return;
-    const u = new SpeechSynthesisUtterance(current.ES);
-    u.lang = 'es-ES';
+    const u = new SpeechSynthesisUtterance(current[SOURCE_LANG]);
+    u.lang = TTS_LANG;
     speechSynthesis.cancel();
     speechSynthesis.speak(u);
   }
@@ -103,9 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function normalize(text) {
     return text
       .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-zñáéíóúü\s']/g, ' ')
+      .replace(/[^a-záéíóúüñ']/gi, ' ')
       .replace(/\s+/g, ' ')
       .trim();
   }
@@ -135,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     LISTEN
+     LISTEN — iOS SAFE
   ======================= */
 
   function listen() {
@@ -149,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rec = new SpeechRecognition();
 
-    rec.lang = 'es-ES';
+    rec.lang = STT_LANG;
     rec.continuous = false;
     rec.interimResults = false;
     rec.maxAlternatives = 1;
@@ -165,23 +168,23 @@ document.addEventListener('DOMContentLoaded', () => {
     rec.onresult = e => {
       const spokenRaw = e.results[0][0].transcript;
       const spoken = normalize(spokenRaw);
-      const target = normalize(current.ES);
+      const target = normalize(current[SOURCE_LANG]);
 
       const score = similarity(spoken, target);
 
-      spanishText.innerHTML = highlightDifferences(target, spoken);
+      sourceText.innerHTML = highlightDifferences(target, spoken);
+
+      const key = current[SOURCE_LANG];
 
       if (score >= 0.75) {
         feedback.textContent = '✅ Boa pronúncia geral';
         stats.hits++;
-        stats.weights[current.ES] =
-          Math.max(1, (stats.weights[current.ES] || 1) - 1);
+        stats.weights[key] = Math.max(1, (stats.weights[key] || 1) - 1);
         adjustLevel(true);
       } else {
         feedback.textContent = '❌ Atenção às palavras destacadas';
         stats.errors++;
-        stats.weights[current.ES] =
-          (stats.weights[current.ES] || 1) + 2;
+        stats.weights[key] = (stats.weights[key] || 1) + 2;
         adjustLevel(false);
       }
 
@@ -219,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function toggleDataset() {
     datasetKey = datasetKey === 'frases' ? 'palavras' : 'frases';
-    localStorage.setItem('dataset_es', datasetKey);
+    localStorage.setItem('dataset', datasetKey);
     loadDataset();
   }
 
@@ -237,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function saveStats() {
-    localStorage.setItem('stats_es', JSON.stringify(stats));
+    localStorage.setItem('stats', JSON.stringify(stats));
   }
 
 });
