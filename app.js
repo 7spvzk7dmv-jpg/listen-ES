@@ -1,182 +1,243 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-     ESTADO
+     CONFIGURAÇÃO GERAL
   ======================= */
 
-  const ESTADO_PADRAO = {
-    dataset: 'frases',
-    acertos: 0,
-    erros: 0,
-    stats: {}
+  const DATASETS = {
+    frases: 'data/frases.json',
+    palavras: 'data/palavras.json'
   };
 
-  let estado = JSON.parse(localStorage.getItem('estadoTreinoES'))
-    || JSON.parse(JSON.stringify(ESTADO_PADRAO));
+  const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-  let frases = [];
-  let atual = null;
+  let datasetKey = localStorage.getItem('dataset_es') || 'frases';
+  let data = [];
+  let current = null;
 
-  /* =======================
-     DOM (DEFENSIVO)
-  ======================= */
-
-  const $ = id => document.getElementById(id);
-
-  const fraseES = $('fraseES');
-  const resposta = $('resposta');
-  const resultado = $('resultado');
-  const linha = $('linha');
-  const nivel = $('nivel');
-
-  const btnOuvir = $('ouvir');
-  const btnConferir = $('conferir');
-  const btnProxima = $('proxima');
-  const btnReset = $('resetProgress');
-  const btnToggle = $('toggleDataset');
-
-  if (!fraseES || !resposta || !resultado) {
-    console.error('❌ IDs do HTML não conferem com o JS');
-    return;
-  }
+  let stats = JSON.parse(localStorage.getItem('stats_es')) || {
+    level: 'A1',
+    hits: 0,
+    errors: 0,
+    weights: {}
+  };
 
   /* =======================
-     DATASET
+     ELEMENTOS DO DOM
   ======================= */
 
-  async function carregarDataset() {
-    const arquivo =
-      estado.dataset === 'frases'
-        ? 'data/frases.json'
-        : 'data/palavras.json';
-
-    try {
-      const r = await fetch(arquivo);
-      frases = await r.json();
-
-      frases.forEach((f, i) => {
-        if (!f.ID) f.ID = `${estado.dataset}_${i}`;
-      });
-
-      salvar();
-      mostrarFrase(escolherProxima());
-
-    } catch (e) {
-      fraseES.textContent = 'Erro ao carregar dataset';
-      console.error(e);
-    }
-  }
-
-  /* =======================
-     UTIL
-  ======================= */
-
-  function normalizar(t) {
-    return t
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^\w\sñ]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
-
-  function similar(a, b) {
-    if (!a || !b) return 0;
-    const wa = a.split(' ');
-    const wb = b.split(' ');
-    let hits = 0;
-    wa.forEach(w => wb.includes(w) && hits++);
-    return hits / Math.max(wa.length, wb.length);
-  }
-
-  /* =======================
-     FRASE
-  ======================= */
-
-  function mostrarFrase(f) {
-    atual = f;
-    fraseES.textContent = f.ES;
-    resposta.value = '';
-    resultado.textContent = '';
-    if (linha) linha.textContent = frases.indexOf(f) + 1;
-    if (nivel) nivel.textContent = f.CEFR || '-';
-  }
-
-  function escolherProxima() {
-    const pesos = frases.map(f => (estado.stats[f.ID]?.erros || 0) + 1);
-    const total = pesos.reduce((a, b) => a + b, 0);
-    let r = Math.random() * total;
-
-    for (let i = 0; i < frases.length; i++) {
-      if ((r -= pesos[i]) <= 0) return frases[i];
-    }
-    return frases[0];
-  }
+  const spanishText = document.getElementById('spanishText');
+  const translationText = document.getElementById('translationText');
+  const feedback = document.getElementById('feedback');
+  const hitsEl = document.getElementById('hits');
+  const errorsEl = document.getElementById('errors');
+  const levelText = document.getElementById('levelText');
+  const toggleDatasetBtn = document.getElementById('toggleDataset');
 
   /* =======================
      EVENTOS
   ======================= */
 
-  btnOuvir?.addEventListener('click', () => {
-    if (!atual) return;
-    const u = new SpeechSynthesisUtterance(atual.ES);
-    u.lang = 'es-ES';
-    speechSynthesis.cancel();
-    speechSynthesis.speak(u);
-  });
+  document.getElementById('playBtn').onclick = speak;
+  document.getElementById('micBtn').onclick = listen;
+  document.getElementById('translateBtn').onclick = toggleTranslation;
+  document.getElementById('nextBtn').onclick = nextSentence;
+  document.getElementById('resetBtn').onclick = resetProgress;
+  toggleDatasetBtn.onclick = toggleDataset;
 
-  btnConferir?.addEventListener('click', () => {
-    if (!atual) return;
-
-    const rUser = normalizar(resposta.value);
-    const rOk = normalizar(atual.PTBR);
-    const score = similar(rUser, rOk);
-
-    estado.stats[atual.ID] ??= { tentativas: 0, erros: 0 };
-    estado.stats[atual.ID].tentativas++;
-
-    if (score >= 0.6) {
-      resultado.textContent = '✅ Correto!';
-      estado.acertos++;
-    } else {
-      resultado.textContent = `❌ Correto: ${atual.PTBR}`;
-      estado.erros++;
-      estado.stats[atual.ID].erros++;
-    }
-
-    salvar();
-  });
-
-  btnProxima?.addEventListener('click', () => {
-    mostrarFrase(escolherProxima());
-  });
-
-  btnReset?.addEventListener('click', () => {
-    if (!confirm('Resetar progresso?')) return;
-    localStorage.removeItem('estadoTreinoES');
-    location.reload();
-  });
-
-  btnToggle?.addEventListener('click', () => {
-    estado = JSON.parse(JSON.stringify(ESTADO_PADRAO));
-    estado.dataset = estado.dataset === 'frases' ? 'palavras' : 'frases';
-    salvar();
-    carregarDataset();
-  });
+  loadDataset();
 
   /* =======================
-     PERSISTÊNCIA
+     DATASET
   ======================= */
 
-  function salvar() {
-    localStorage.setItem('estadoTreinoES', JSON.stringify(estado));
+  async function loadDataset() {
+    try {
+      const res = await fetch(DATASETS[datasetKey]);
+      data = await res.json();
+      nextSentence();
+      updateUI();
+    } catch (e) {
+      spanishText.textContent = 'Erro ao carregar dataset.';
+      console.error(e);
+    }
+  }
+
+  function weightedRandom(items) {
+    const pool = [];
+    items.forEach(item => {
+      const w = stats.weights[item.ES] || 1;
+      for (let i = 0; i < w; i++) pool.push(item);
+    });
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function nextSentence() {
+    if (!data.length) return;
+
+    const filtered = data.filter(d => d.CEFR === stats.level);
+    current = weightedRandom(filtered.length ? filtered : data);
+
+    spanishText.textContent = current.ES;
+    translationText.textContent = current.PTBR;
+    translationText.classList.add('hidden');
+    feedback.textContent = '';
   }
 
   /* =======================
-     START
+     ÁUDIO (TTS)
   ======================= */
 
-  carregarDataset();
+  function speak() {
+    if (!current) return;
+    const u = new SpeechSynthesisUtterance(current.ES);
+    u.lang = 'es-ES';
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  }
+
+  /* =======================
+     PRONÚNCIA (STT)
+  ======================= */
+
+  function normalize(text) {
+    return text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zñáéíóúü\s']/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function similarity(a, b) {
+    if (!a || !b) return 0;
+    if (a === b) return 1;
+
+    let same = 0;
+    for (let i = 0; i < Math.min(a.length, b.length); i++) {
+      if (a[i] === b[i]) same++;
+    }
+    return same / Math.max(a.length, b.length);
+  }
+
+  function highlightDifferences(target, spoken) {
+    const t = target.split(' ');
+    const s = spoken.split(' ');
+
+    return t.map((w, i) => {
+      const score = similarity(w, s[i] || '');
+      if (score >= 0.85) return `<span>${w}</span>`;
+      if (score >= 0.5)
+        return `<span class="text-yellow-400 underline">${w}</span>`;
+      return `<span class="text-red-400 underline">${w}</span>`;
+    }).join(' ');
+  }
+
+  /* =======================
+     LISTEN
+  ======================= */
+
+  function listen() {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      feedback.textContent = 'Reconhecimento de voz não suportado neste navegador.';
+      return;
+    }
+
+    const rec = new SpeechRecognition();
+
+    rec.lang = 'es-ES';
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    rec.onstart = () => {
+      feedback.textContent = '🎙️ Ouvindo... fale agora';
+    };
+
+    rec.onerror = e => {
+      feedback.textContent = '⚠️ Erro no microfone: ' + e.error;
+    };
+
+    rec.onresult = e => {
+      const spokenRaw = e.results[0][0].transcript;
+      const spoken = normalize(spokenRaw);
+      const target = normalize(current.ES);
+
+      const score = similarity(spoken, target);
+
+      spanishText.innerHTML = highlightDifferences(target, spoken);
+
+      if (score >= 0.75) {
+        feedback.textContent = '✅ Boa pronúncia geral';
+        stats.hits++;
+        stats.weights[current.ES] =
+          Math.max(1, (stats.weights[current.ES] || 1) - 1);
+        adjustLevel(true);
+      } else {
+        feedback.textContent = '❌ Atenção às palavras destacadas';
+        stats.errors++;
+        stats.weights[current.ES] =
+          (stats.weights[current.ES] || 1) + 2;
+        adjustLevel(false);
+      }
+
+      saveStats();
+      updateUI();
+    };
+
+    rec.onend = () => {
+      if (feedback.textContent.includes('Ouvindo')) {
+        feedback.textContent = '⚠️ Não detectei fala. Tente novamente.';
+      }
+    };
+
+    rec.start();
+  }
+
+  /* =======================
+     PROGRESSÃO CEFR
+  ======================= */
+
+  function adjustLevel(success) {
+    let i = levels.indexOf(stats.level);
+    if (success && i < levels.length - 1) i++;
+    if (!success && i > 0) i--;
+    stats.level = levels[i];
+  }
+
+  /* =======================
+     UI / ESTADO
+  ======================= */
+
+  function toggleTranslation() {
+    translationText.classList.toggle('hidden');
+  }
+
+  function toggleDataset() {
+    datasetKey = datasetKey === 'frases' ? 'palavras' : 'frases';
+    localStorage.setItem('dataset_es', datasetKey);
+    loadDataset();
+  }
+
+  function resetProgress() {
+    if (!confirm('Deseja apagar todo o progresso?')) return;
+    localStorage.clear();
+    location.reload();
+  }
+
+  function updateUI() {
+    hitsEl.textContent = stats.hits;
+    errorsEl.textContent = stats.errors;
+    levelText.textContent = `Nível atual: ${stats.level}`;
+    toggleDatasetBtn.textContent = `Dataset: ${datasetKey}`;
+  }
+
+  function saveStats() {
+    localStorage.setItem('stats_es', JSON.stringify(stats));
+  }
 
 });
