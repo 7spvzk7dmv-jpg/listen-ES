@@ -1,147 +1,206 @@
+/* =======================
+   ESTADO GLOBAL
+======================= */
+
 let frases = [];
 
-let estado = JSON.parse(localStorage.getItem("estadoTreinoES")) || {
-  indiceAtual: 0,
-  stats: {},
+const ESTADO_PADRAO = {
+  dataset: 'frases',
   acertos: 0,
   erros: 0,
-  dataset: "frases"
+  stats: {} // chave: ID da frase
 };
 
-const fraseES = document.getElementById("fraseES");
-const resposta = document.getElementById("resposta");
-const resultado = document.getElementById("resultado");
-const linha = document.getElementById("linha");
-const nivel = document.getElementById("nivel");
+let estado = JSON.parse(localStorage.getItem('estadoTreinoES')) || structuredClone(ESTADO_PADRAO);
 
-function carregarDataset() {
+/* =======================
+   ELEMENTOS DO DOM
+======================= */
+
+const fraseES = document.getElementById('fraseES');
+const resposta = document.getElementById('resposta');
+const resultado = document.getElementById('resultado');
+const linha = document.getElementById('linha');
+const nivel = document.getElementById('nivel');
+
+/* =======================
+   DATASET
+======================= */
+
+async function carregarDataset() {
   const arquivo =
-    estado.dataset === "frases"
-      ? "data/frases.json"
-      : "data/palavras.json";
+    estado.dataset === 'frases'
+      ? 'data/frases.json'
+      : 'data/palavras.json';
 
-  fetch(arquivo)
-    .then(r => r.json())
-    .then(d => {
-      frases = d;
-      estado.indiceAtual = 0;
-      estado.stats = {};
-      salvar();
-      mostrarFrase();
-      atualizarGrafico();
-    })
-    .catch(e => {
-      fraseES.textContent = "Erro ao carregar dataset.";
-      console.error(e);
+  try {
+    const r = await fetch(arquivo);
+    frases = await r.json();
+
+    // garante ID estável
+    frases.forEach((f, i) => {
+      if (!f.ID) f.ID = `${estado.dataset}_${i}`;
     });
+
+    salvar();
+    mostrarFrase(escolherProxima());
+    atualizarGrafico();
+  } catch (e) {
+    fraseES.textContent = 'Erro ao carregar dataset.';
+    console.error(e);
+  }
 }
 
 carregarDataset();
 
+/* =======================
+   UTILITÁRIOS
+======================= */
+
 function normalizar(txt) {
   return txt
     .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^\w\sñ]/g, "")
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\sñ]/g, '')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
 function similar(a, b) {
-  let acertos = 0;
-  const wa = a.split(" ");
-  const wb = b.split(" ");
+  if (!a || !b) return 0;
+
+  const wa = a.split(' ');
+  const wb = b.split(' ');
+
+  let hits = 0;
   wa.forEach(w => {
-    if (wb.includes(w)) acertos++;
+    if (wb.includes(w)) hits++;
   });
-  return acertos / Math.max(wa.length, wb.length);
+
+  return hits / Math.max(wa.length, wb.length);
 }
 
-function mostrarFrase() {
-  const f = frases[estado.indiceAtual];
-  fraseES.textContent = f.ES;
-  linha.textContent = estado.indiceAtual + 1;
-  nivel.textContent = f.CEFR;
-  resposta.value = "";
-  resultado.textContent = "";
+/* =======================
+   FRASE ATUAL
+======================= */
+
+let atual = null;
+
+function mostrarFrase(frase) {
+  atual = frase;
+  fraseES.textContent = frase.ES;
+  linha.textContent = frases.indexOf(frase) + 1;
+  nivel.textContent = frase.CEFR || '-';
+  resposta.value = '';
+  resultado.textContent = '';
 }
 
-document.getElementById("ouvir").onclick = () => {
-  const u = new SpeechSynthesisUtterance(fraseES.textContent);
-  u.lang = "es-ES";
+/* =======================
+   ÁUDIO
+======================= */
+
+document.getElementById('ouvir').onclick = () => {
+  if (!atual) return;
+  const u = new SpeechSynthesisUtterance(atual.ES);
+  u.lang = 'es-ES';
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
 };
 
-document.getElementById("conferir").onclick = () => {
-  const f = frases[estado.indiceAtual];
+/* =======================
+   CONFERÊNCIA
+======================= */
+
+document.getElementById('conferir').onclick = () => {
+  if (!atual) return;
+
   const rUser = normalizar(resposta.value);
-  const rOk = normalizar(f.PTBR);
+  const rOk = normalizar(atual.PTBR);
 
   const score = similar(rUser, rOk);
 
-  estado.stats[estado.indiceAtual] ??= { tentativas: 0, erros: 0 };
-  estado.stats[estado.indiceAtual].tentativas++;
+  estado.stats[atual.ID] ??= { tentativas: 0, erros: 0 };
+  estado.stats[atual.ID].tentativas++;
 
   if (score >= 0.6) {
-    resultado.textContent = "✅ Correto!";
+    resultado.textContent = '✅ Correto!';
     estado.acertos++;
   } else {
-    resultado.textContent = `❌ Correto seria: ${f.PTBR}`;
+    resultado.textContent = `❌ Correto seria: ${atual.PTBR}`;
     estado.erros++;
-    estado.stats[estado.indiceAtual].erros++;
+    estado.stats[atual.ID].erros++;
   }
 
   salvar();
   atualizarGrafico();
 };
 
-document.getElementById("proxima").onclick = () => {
-  estado.indiceAtual = escolherProxima();
-  mostrarFrase();
-};
+/* =======================
+   SELEÇÃO PONDERADA
+======================= */
 
 function escolherProxima() {
-  const pesos = frases.map((_, i) => {
-    const e = estado.stats[i]?.erros || 0;
+  const pesos = frases.map(f => {
+    const e = estado.stats[f.ID]?.erros || 0;
     return e + 1;
   });
 
   const total = pesos.reduce((a, b) => a + b, 0);
   let r = Math.random() * total;
 
-  for (let i = 0; i < pesos.length; i++) {
-    if ((r -= pesos[i]) <= 0) return i;
+  for (let i = 0; i < frases.length; i++) {
+    if ((r -= pesos[i]) <= 0) return frases[i];
   }
-  return 0;
+
+  return frases[0];
 }
 
-function salvar() {
-  localStorage.setItem("estadoTreinoES", JSON.stringify(estado));
-}
-
-document.getElementById("resetProgress").onclick = () => {
-  if (confirm("Resetar todo o progresso?")) {
-    localStorage.removeItem("estadoTreinoES");
-    location.reload();
-  }
+document.getElementById('proxima').onclick = () => {
+  mostrarFrase(escolherProxima());
 };
 
-document.getElementById("toggleDataset").onclick = () => {
-  estado.dataset = estado.dataset === "frases" ? "palavras" : "frases";
+/* =======================
+   PERSISTÊNCIA
+======================= */
+
+function salvar() {
+  localStorage.setItem('estadoTreinoES', JSON.stringify(estado));
+}
+
+/* =======================
+   RESET / DATASET
+======================= */
+
+document.getElementById('resetProgress').onclick = () => {
+  if (!confirm('Resetar todo o progresso?')) return;
+  localStorage.removeItem('estadoTreinoES');
+  location.reload();
+};
+
+document.getElementById('toggleDataset').onclick = () => {
+  estado = structuredClone(ESTADO_PADRAO);
+  estado.dataset = estado.dataset === 'frases' ? 'palavras' : 'frases';
   salvar();
   carregarDataset();
 };
 
+/* =======================
+   GRÁFICO
+======================= */
+
 let chart;
+
 function atualizarGrafico() {
-  const ctx = document.getElementById("grafico");
+  const ctx = document.getElementById('grafico');
+  if (!ctx) return;
+
   if (chart) chart.destroy();
 
   chart = new Chart(ctx, {
-    type: "bar",
+    type: 'bar',
     data: {
-      labels: ["Acertos", "Erros"],
+      labels: ['Acertos', 'Erros'],
       datasets: [
         {
           data: [estado.acertos, estado.erros]
