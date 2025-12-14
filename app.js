@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let datasetKey = localStorage.getItem('dataset') || 'frases';
   let data = [];
   let current = null;
+  let spanishVoice = null;
 
   let stats = JSON.parse(localStorage.getItem('stats')) || {
     level: 'A1',
@@ -33,6 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const errorsEl = document.getElementById('errors');
   const levelText = document.getElementById('levelText');
   const toggleDatasetBtn = document.getElementById('toggleDataset');
+
+  /* =======================
+     VOZ ESPANHOLA (iOS FIX)
+  ======================= */
+
+  function loadSpanishVoice() {
+    const voices = speechSynthesis.getVoices();
+
+    // Preferência: espanhol da Espanha (mais neutro)
+    spanishVoice =
+      voices.find(v => v.lang === 'es-ES') ||
+      voices.find(v => v.lang.startsWith('es')) ||
+      null;
+  }
+
+  // Safari carrega vozes de forma assíncrona
+  speechSynthesis.onvoiceschanged = loadSpanishVoice;
+  loadSpanishVoice();
 
   /* =======================
      EVENTOS
@@ -85,18 +104,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     ÁUDIO (TTS)
+     ÁUDIO (TTS) — NATURAL
   ======================= */
 
   function speak() {
-    if (!current) return;
+    if (!current || !current.ESP) return;
 
     speechSynthesis.cancel();
 
     const u = new SpeechSynthesisUtterance(current.ESP);
     u.lang = 'es-ES';
-    u.rate = 1;
-    u.pitch = 1;
+
+    if (spanishVoice) {
+      u.voice = spanishVoice;
+    }
+
+    // Ajustes específicos para espanhol
+    u.rate = 0.9;   // espanhol fica melhor levemente mais lento
+    u.pitch = 1.0;
+    u.volume = 1;
 
     speechSynthesis.speak(u);
   }
@@ -138,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     LISTEN — SAFARI iOS FIX
+     LISTEN — SAFARI iOS
   ======================= */
 
   function listen() {
@@ -153,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 🔓 Desbloqueia sessão de áudio no iOS
+    // 🔓 desbloqueia sessão de áudio no iOS
     speechSynthesis.cancel();
     const unlock = new SpeechSynthesisUtterance(' ');
     unlock.lang = 'es-ES';
