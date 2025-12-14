@@ -90,9 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function speak() {
     if (!current) return;
+
+    speechSynthesis.cancel();
+
     const u = new SpeechSynthesisUtterance(current.ESP);
     u.lang = 'es-ES';
-    speechSynthesis.cancel();
+    u.rate = 1;
+    u.pitch = 1;
+
     speechSynthesis.speak(u);
   }
 
@@ -103,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function normalize(text) {
     return text
       .toLowerCase()
-      // ⚠️ ESTA LINHA É O QUE ESTAVA QUEBRANDO
       .replace(/[^a-záéíóúüñ']/gi, ' ')
       .replace(/\s+/g, ' ')
       .trim();
@@ -134,38 +138,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* =======================
-     LISTEN — IGUAL AO INGLÊS
+     LISTEN — SAFARI iOS FIX
   ======================= */
 
   function listen() {
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-
+    const SpeechRecognition = window.webkitSpeechRecognition;
     if (!SpeechRecognition) {
       feedback.textContent = 'Reconhecimento de voz não suportado.';
       return;
     }
 
-    const rec = new SpeechRecognition();
+    if (!current || !current.ESP) {
+      feedback.textContent = 'Frase inválida.';
+      return;
+    }
 
+    // 🔓 Desbloqueia sessão de áudio no iOS
+    speechSynthesis.cancel();
+    const unlock = new SpeechSynthesisUtterance(' ');
+    unlock.lang = 'es-ES';
+    unlock.volume = 0;
+    speechSynthesis.speak(unlock);
+
+    const rec = new SpeechRecognition();
     rec.lang = 'es-ES';
     rec.continuous = false;
     rec.interimResults = false;
     rec.maxAlternatives = 1;
 
-    rec.onstart = () => {
-      feedback.textContent = '🎙️ Ouvindo... fale agora';
-    };
-
-    rec.onerror = e => {
-      feedback.textContent = '⚠️ Erro no microfone: ' + e.error;
-    };
+    feedback.textContent = '🎙️ Ouvindo... fale agora';
 
     rec.onresult = e => {
-      const spokenRaw = e.results[0][0].transcript;
-      const spoken = normalize(spokenRaw);
+      const spoken = normalize(e.results[0][0].transcript);
       const target = normalize(current.ESP);
-
       const score = similarity(spoken, target);
 
       englishText.innerHTML = highlightDifferences(target, spoken);
@@ -188,10 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
       updateUI();
     };
 
-    rec.onend = () => {
-      if (feedback.textContent.includes('Ouvindo')) {
-        feedback.textContent = '⚠️ Não detectei fala. Tente novamente.';
-      }
+    rec.onerror = e => {
+      feedback.textContent = '⚠️ Microfone: ' + e.error;
     };
 
     rec.start();
