@@ -6,9 +6,8 @@ let auth = null;
 let db = null;
 
 (function initFirebase() {
-
   if (typeof firebase === 'undefined') {
-    console.error('Firebase CDN não carregou');
+    console.error('Firebase não carregou');
     return;
   }
 
@@ -28,14 +27,11 @@ let db = null;
   auth = firebase.auth();
   db = firebase.firestore();
 
-  // 🔐 Persistência explícita (Safari)
-  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-    .catch(() => {});
-
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
 })();
 
 /* =======================
-   AUTH HELPERS
+   AUTH
 ======================= */
 
 function loginEmail(email, password) {
@@ -46,14 +42,18 @@ function registerEmail(email, password) {
   return auth.createUserWithEmailAndPassword(email, password);
 }
 
-function loginGoogleRedirect() {
+function loginGooglePopup() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({ prompt: 'select_account' });
-  return auth.signInWithRedirect(provider);
+  return auth.signInWithPopup(provider);
 }
 
 function logout() {
   return auth.signOut();
+}
+
+function onAuth(cb) {
+  auth.onAuthStateChanged(cb);
 }
 
 /* =======================
