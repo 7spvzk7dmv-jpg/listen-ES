@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase compat (OBRIGATÓRIO no GitHub Pages) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase wrapper -->
   <script src="firebase.js"></script>
 </head>
 
@@ -73,16 +80,17 @@
 
   </div>
 
-<script>
-  document.getElementById('logoutBtn').onclick = async () => {
-    try {
-      await logout();
-    } finally {
-      window.location.href = 'login.html';
-    }
-  };
-</script>
+  <script>
+    document.getElementById('logoutBtn').onclick = async () => {
+      try {
+        await logout();
+      } finally {
+        window.location.href = 'login.html';
+      }
+    };
+  </script>
 
-<script src="app.js"></script>
+  <!-- App principal -->
+  <script src="app.js"></script>
 </body>
 </html>
