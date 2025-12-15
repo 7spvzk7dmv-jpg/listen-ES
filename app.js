@@ -164,4 +164,157 @@ document.addEventListener('DOMContentLoaded', () => {
     feedback.textContent = '';
   }
 
-  /* ====================*
+  /* =======================
+     PRONÚNCIA (STT)
+  ======================= */
+
+  function normalize(text) {
+    return text
+      .toLowerCase()
+      .replace(/[^a-z']/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function similarity(a, b) {
+    let same = 0;
+    for (let i = 0; i < Math.min(a.length, b.length); i++) {
+      if (a[i] === b[i]) same++;
+    }
+    return same / Math.max(a.length, b.length);
+  }
+
+  function highlightDifferences(target, spoken) {
+    const t = target.split(' ');
+    const s = spoken.split(' ');
+
+    return t.map((w, i) => {
+      const score = similarity(w, s[i] || '');
+
+      if (score >= 0.85) return `<span>${w}</span>`;
+
+      const cls =
+        score >= 0.5
+          ? 'text-yellow-400 underline cursor-pointer'
+          : 'text-red-400 underline cursor-pointer';
+
+      return `<span class="${cls}" data-word="${w}">${w}</span>`;
+    }).join(' ');
+  }
+
+  function attachWordListeners() {
+    document.querySelectorAll('[data-word]').forEach(el => {
+      el.addEventListener('click', () => speakWord(el.dataset.word));
+    });
+  }
+
+  function listen() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR || !current) {
+      feedback.textContent = '❌ Reconhecimento não suportado';
+      return;
+    }
+
+    const rec = new SR();
+    rec.lang = 'en-US';
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    rec.onstart = () => feedback.textContent = '🎙️ Ouvindo...';
+
+    rec.onresult = e => {
+      const spoken = normalize(e.results[0][0].transcript);
+      const target = normalize(current.ENG);
+      const score = similarity(spoken, target);
+
+      englishText.innerHTML = highlightDifferences(target, spoken);
+      attachWordListeners();
+
+      if (score >= 0.75) {
+        feedback.textContent = '✅ Boa pronúncia';
+        stats.hits++;
+        stats.weights[current.ENG] =
+          Math.max(1, (stats.weights[current.ENG] || 1) - 1);
+        adjustLevel(true);
+      } else {
+        feedback.textContent = '❌ Atenção às palavras';
+        stats.errors++;
+        stats.weights[current.ENG] =
+          (stats.weights[current.ENG] || 1) + 2;
+        adjustLevel(false);
+      }
+
+      saveAll();
+      updateUI();
+    };
+
+    rec.onerror = () => {
+      feedback.textContent = '⚠️ Erro no reconhecimento de voz';
+    };
+
+    rec.start();
+  }
+
+  /* =======================
+     PROGRESSÃO CEFR
+  ======================= */
+
+  function adjustLevel(success) {
+    let i = levels.indexOf(stats.level);
+    if (success && i < levels.length - 1) i++;
+    if (!success && i > 0) i--;
+    stats.level = levels[i];
+  }
+
+  /* =======================
+     UI / ESTADO
+  ======================= */
+
+  function toggleTranslation() {
+    translationText.classList.toggle('hidden');
+  }
+
+  function toggleDataset() {
+    datasetKey = datasetKey === 'frases' ? 'palavras' : 'frases';
+    saveAll();
+    loadDataset();
+  }
+
+  function toggleExamMode() {
+    examMode = !examMode;
+    saveAll();
+    nextSentence();
+    updateUI();
+  }
+
+  function resetProgress() {
+    if (!confirm('Deseja apagar todo o progresso?')) return;
+
+    stats = { level: 'A1', hits: 0, errors: 0, weights: {} };
+    examMode = false;
+    datasetKey = 'frases';
+
+    saveAll();
+    loadDataset();
+  }
+
+  function updateUI() {
+    hitsEl.textContent = stats.hits;
+    errorsEl.textContent = stats.errors;
+    levelText.textContent = `Nível atual: ${stats.level}`;
+    examModeBtn.textContent = examMode ? '📝 Modo exame: ON' : '📝 Modo exame: OFF';
+    toggleDatasetBtn.textContent = `Dataset: ${datasetKey}`;
+  }
+
+  function saveAll() {
+    if (!firebaseReady || !userRef) return;
+
+    setDoc(userRef, {
+      stats,
+      datasetKey,
+      examMode
+    });
+  }
+
+});
