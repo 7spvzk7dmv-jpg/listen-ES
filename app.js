@@ -1,26 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-     AUTH GATE (OBRIGATÓRIO)
+     AUTH GATE (ÚNICA FONTE)
   ======================= */
 
-  const authWait = setInterval(() => {
-    if (typeof getUser !== 'function') return;
-
-    const user = getUser();
-    if (user === undefined) return;
-
-    clearInterval(authWait);
-
+  firebase.auth().onAuthStateChanged(async user => {
     if (!user) {
       window.location.href = 'login.html';
       return;
     }
 
-    initApp();
-  }, 50);
+    initApp(user.uid);
+  });
 
-  async function initApp() {
+  async function initApp(uid) {
 
     /* =======================
        CONFIGURAÇÃO
@@ -33,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-    let datasetKey = (await loadUserData('dataset')) || 'frases';
-    let examMode = (await loadUserData('examMode')) || false;
+    let datasetKey = (await loadUserData(uid, 'dataset')) || 'frases';
+    let examMode = (await loadUserData(uid, 'examMode')) || false;
 
-    let stats = (await loadUserData('stats')) || {
+    let stats = (await loadUserData(uid, 'stats')) || {
       level: 'A1',
       hits: 0,
       errors: 0,
@@ -61,14 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const examModeBtn = document.getElementById('examModeBtn');
 
     /* =======================
-       VOZ ESPANHOLA (TTS)
+       TTS (ESPANHOL NATURAL)
     ======================= */
 
     function loadSpanishVoice() {
       const voices = speechSynthesis.getVoices();
       spanishVoice =
-        voices.find(v => v.lang === 'es-ES' && v.name.toLowerCase().includes('natural')) ||
-        voices.find(v => v.lang === 'es-ES') ||
+        voices.find(v => v.lang === 'es-ES' && v.localService) ||
         voices.find(v => v.lang.startsWith('es')) ||
         null;
     }
@@ -144,14 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return t.map((w, i) => {
         const score = similarity(w, s[i] || '');
         if (score >= 0.8) return `<span>${w}</span>`;
-        return `<span class="text-red-400 underline cursor-pointer" data-word="${w}">${w}</span>`;
+        return `<span class="text-red-400 underline cursor-pointer">${w}</span>`;
       }).join(' ');
     }
 
     function listen() {
       const SR = window.webkitSpeechRecognition;
       if (!SR) {
-        feedback.textContent = 'STT não suportado neste navegador.';
+        feedback.textContent = 'STT não suportado.';
         return;
       }
 
@@ -191,10 +183,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ======================= */
 
     function adjustLevel(ok) {
-      let idx = levels.indexOf(stats.level);
-      if (ok && idx < levels.length - 1) idx++;
-      if (!ok && idx > 0) idx--;
-      stats.level = levels[idx];
+      let i = levels.indexOf(stats.level);
+      if (ok && i < levels.length - 1) i++;
+      if (!ok && i > 0) i--;
+      stats.level = levels[i];
     }
 
     /* =======================
@@ -211,9 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function save() {
       updateUI();
-      await saveUserData('stats', stats);
-      await saveUserData('dataset', datasetKey);
-      await saveUserData('examMode', examMode);
+      await saveUserData(uid, 'stats', stats);
+      await saveUserData(uid, 'dataset', datasetKey);
+      await saveUserData(uid, 'examMode', examMode);
     }
 
     /* =======================
