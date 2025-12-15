@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase compat -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase wrapper -->
   <script src="firebase.js"></script>
 </head>
 
@@ -43,8 +50,10 @@
 
     <button id="googleBtn"
       class="w-full bg-white text-zinc-900 flex items-center justify-center gap-2 px-4 py-2 rounded hover:bg-zinc-200 transition">
-      <img src="https://developers.google.com/identity/images/g-logo.png"
-           alt="Google" class="w-5 h-5">
+      <img
+        src="https://developers.google.com/identity/images/g-logo.png"
+        alt="Google"
+        class="w-5 h-5">
       Entrar com Google
     </button>
 
