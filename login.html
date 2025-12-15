@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Login • Spanish Trainer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>Spanish Trainer – Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -15,11 +14,11 @@
   <script src="firebase.js"></script>
 </head>
 
-<body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
+<body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center">
 
 <div class="w-full max-w-sm bg-zinc-800 p-6 rounded space-y-4">
 
-  <h1 class="text-xl text-center">Spanish Trainer</h1>
+  <h1 class="text-xl text-center font-semibold">Spanish Trainer</h1>
 
   <input id="email" type="email" placeholder="Email"
     class="w-full p-2 rounded bg-zinc-700">
@@ -32,7 +31,7 @@
   </button>
 
   <button id="registerBtn" class="w-full bg-zinc-600 p-2 rounded">
-    Cadastrar
+    Criar conta
   </button>
 
   <div class="flex items-center gap-2">
@@ -41,41 +40,29 @@
     <div class="flex-1 h-px bg-zinc-600"></div>
   </div>
 
-  <!-- 🔑 GOOGLE: CHAMADA DIRETA -->
   <button id="googleBtn"
     class="w-full flex items-center justify-center gap-2 bg-white text-black p-2 rounded">
     <img src="https://developers.google.com/identity/images/g-logo.png" class="w-5 h-5">
     Entrar com Google
   </button>
 
-  <p id="feedback" class="text-center text-red-400 text-sm"></p>
+  <p id="msg" class="text-center text-red-400 text-sm"></p>
 </div>
 
 <script>
-  const feedback = document.getElementById('feedback');
-
   firebase.auth().onAuthStateChanged(user => {
     if (user) location.href = 'index.html';
   });
 
-  loginBtn.onclick = () => {
-    firebase.auth()
-      .signInWithEmailAndPassword(email.value, password.value)
-      .catch(e => feedback.textContent = e.message);
-  };
+  loginBtn.onclick = () =>
+    loginEmail(email.value, password.value)
+      .catch(e => msg.textContent = e.message);
 
-  registerBtn.onclick = () => {
-    firebase.auth()
-      .createUserWithEmailAndPassword(email.value, password.value)
-      .catch(e => feedback.textContent = e.message);
-  };
+  registerBtn.onclick = () =>
+    registerEmail(email.value, password.value)
+      .catch(e => msg.textContent = e.message);
 
-  // 🚨 CHAMADA DIRETA, SEM FUNÇÃO, SEM AWAIT
-  googleBtn.onclick = function () {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.setCustomParameters({ prompt: 'select_account' });
-    firebase.auth().signInWithPopup(provider);
-  };
+  googleBtn.onclick = () => loginGoogle();
 </script>
 
 </body>
