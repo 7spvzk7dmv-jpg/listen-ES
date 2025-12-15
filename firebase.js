@@ -7,7 +7,6 @@ let db = null;
 let currentUser = null;
 
 (function initFirebase() {
-
   if (typeof firebase === 'undefined') {
     console.error('Firebase CDN não carregou');
     return;
@@ -32,7 +31,6 @@ let currentUser = null;
   auth.onAuthStateChanged(user => {
     currentUser = user || null;
   });
-
 })();
 
 /* =======================
@@ -61,6 +59,14 @@ function getUser() {
   return currentUser;
 }
 
+function requireAuth() {
+  auth.onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = 'login.html';
+    }
+  });
+}
+
 /* =======================
    FIRESTORE + FALLBACK
 ======================= */
@@ -78,3 +84,27 @@ async function saveUserData(key, value) {
 
   try {
     await userDoc().set({ [key]: value }, { merge: true });
+  } catch (e) {
+    console.warn('Firestore falhou, usando localStorage');
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+}
+
+async function loadUserData(key) {
+  if (!currentUser) {
+    const v = localStorage.getItem(key);
+    return v ? JSON.parse(v) : null;
+  }
+
+  try {
+    const snap = await userDoc().get();
+    if (snap.exists && snap.data()[key] !== undefined) {
+      return snap.data()[key];
+    }
+  } catch (e) {
+    console.warn('Firestore falhou, lendo localStorage');
+  }
+
+  const v = localStorage.getItem(key);
+  return v ? JSON.parse(v) : null;
+}
