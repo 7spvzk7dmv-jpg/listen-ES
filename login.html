@@ -7,7 +7,6 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Firebase compat (Safari / GitHub Pages safe) -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -17,84 +16,51 @@
 
 <body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
 
-  <div class="w-full max-w-sm bg-zinc-800 rounded-2xl shadow-lg p-6 space-y-5">
+<div class="w-full max-w-sm bg-zinc-800 p-6 rounded space-y-4">
+  <h1 class="text-xl text-center">Spanish Trainer</h1>
 
-    <h1 class="text-xl font-semibold text-center">Spanish Trainer</h1>
+  <input id="email" type="email" placeholder="Email" class="w-full p-2 rounded bg-zinc-700">
+  <input id="password" type="password" placeholder="Senha" class="w-full p-2 rounded bg-zinc-700">
 
-    <div class="space-y-3">
-      <input id="email" type="email" placeholder="Email"
-        class="w-full bg-zinc-700 px-3 py-2 rounded focus:outline-none" />
+  <button id="loginBtn" class="w-full bg-emerald-600 p-2 rounded">Entrar</button>
+  <button id="registerBtn" class="w-full bg-zinc-600 p-2 rounded">Cadastrar</button>
 
-      <input id="password" type="password" placeholder="Senha"
-        class="w-full bg-zinc-700 px-3 py-2 rounded focus:outline-none" />
-    </div>
+  <button id="googleBtn"
+    class="w-full flex items-center justify-center gap-2 bg-white text-black p-2 rounded">
+    <img src="https://developers.google.com/identity/images/g-logo.png" class="w-5 h-5">
+    Entrar com Google
+  </button>
 
-    <div class="flex gap-2">
-      <button id="loginBtn"
-        class="flex-1 bg-emerald-600 hover:bg-emerald-500 transition px-4 py-2 rounded">
-        Entrar
-      </button>
-
-      <button id="registerBtn"
-        class="flex-1 bg-zinc-600 hover:bg-zinc-500 transition px-4 py-2 rounded">
-        Cadastrar
-      </button>
-    </div>
-
-    <div class="flex items-center gap-2">
-      <div class="flex-1 h-px bg-zinc-600"></div>
-      <span class="text-xs text-zinc-400">ou</span>
-      <div class="flex-1 h-px bg-zinc-600"></div>
-    </div>
-
-    <!-- BOTÃO GOOGLE COM LOGO -->
-    <button id="googleBtn"
-      class="w-full bg-white text-zinc-900 flex items-center justify-center gap-2 px-4 py-2 rounded hover:bg-zinc-200 transition">
-      <img
-        src="https://developers.google.com/identity/images/g-logo.png"
-        alt="Google"
-        class="w-5 h-5"
-      />
-      Entrar com Google
-    </button>
-
-    <p id="feedback" class="text-sm text-center text-red-400"></p>
-
-  </div>
+  <p id="feedback" class="text-center text-red-400 text-sm"></p>
+</div>
 
 <script>
-  const emailEl = document.getElementById('email');
-  const passEl = document.getElementById('password');
-  const feedback = document.getElementById('feedback');
-
-  // 🔐 Se já estiver logado, redireciona
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      window.location.href = 'index.html';
-    }
+  onAuth(user => {
+    if (user) location.href = 'index.html';
   });
 
-  document.getElementById('loginBtn').onclick = async () => {
-    feedback.textContent = '';
+  loginBtn.onclick = async () => {
     try {
-      await loginEmail(emailEl.value, passEl.value);
+      await loginEmail(email.value, password.value);
     } catch (e) {
       feedback.textContent = e.message;
     }
   };
 
-  document.getElementById('registerBtn').onclick = async () => {
-    feedback.textContent = '';
+  registerBtn.onclick = async () => {
     try {
-      await registerEmail(emailEl.value, passEl.value);
+      await registerEmail(email.value, password.value);
     } catch (e) {
       feedback.textContent = e.message;
     }
   };
 
-  // ✅ Google login via redirect (Safari-safe)
-  document.getElementById('googleBtn').onclick = () => {
-    loginGoogleRedirect();
+  googleBtn.onclick = async () => {
+    try {
+      await loginGooglePopup();
+    } catch (e) {
+      feedback.textContent = e.message;
+    }
   };
 </script>
 
