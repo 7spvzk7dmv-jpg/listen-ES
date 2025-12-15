@@ -1,21 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-     AUTENTICAÇÃO (GATE ÚNICO)
+     AUTH GATE (OBRIGATÓRIO)
   ======================= */
 
-  const waitAuth = setInterval(() => {
+  const authWait = setInterval(() => {
+    if (typeof getUser !== 'function') return;
+
     const user = getUser();
     if (user === undefined) return;
 
-    clearInterval(waitAuth);
+    clearInterval(authWait);
 
     if (!user) {
       window.location.href = 'login.html';
       return;
     }
 
-    initApp(); // 🚀 só inicia o app logado
+    initApp();
   }, 50);
 
   async function initApp() {
@@ -59,12 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const examModeBtn = document.getElementById('examModeBtn');
 
     /* =======================
-       VOZ ESPANHOLA
+       VOZ ESPANHOLA (TTS)
     ======================= */
 
     function loadSpanishVoice() {
       const voices = speechSynthesis.getVoices();
       spanishVoice =
+        voices.find(v => v.lang === 'es-ES' && v.name.toLowerCase().includes('natural')) ||
         voices.find(v => v.lang === 'es-ES') ||
         voices.find(v => v.lang.startsWith('es')) ||
         null;
@@ -72,6 +75,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     speechSynthesis.onvoiceschanged = loadSpanishVoice;
     loadSpanishVoice();
+
+    function speak() {
+      if (!current) return;
+      speechSynthesis.cancel();
+
+      const u = new SpeechSynthesisUtterance(current.ESP);
+      u.lang = 'es-ES';
+      if (spanishVoice) u.voice = spanishVoice;
+      u.rate = 0.9;
+      u.pitch = 1;
+
+      speechSynthesis.speak(u);
+    }
 
     /* =======================
        DATASET
@@ -85,9 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function weightedPick(list) {
       const pool = [];
-      list.forEach(i => {
-        const w = stats.weights[i.ESP] || 1;
-        for (let k = 0; k < w; k++) pool.push(i);
+      list.forEach(item => {
+        const w = stats.weights[item.ESP] || 1;
+        for (let i = 0; i < w; i++) pool.push(item);
       });
       return pool[Math.floor(Math.random() * pool.length)];
     }
@@ -96,47 +112,94 @@ document.addEventListener('DOMContentLoaded', () => {
       const pool = data.filter(d => d.CEFR === stats.level);
       current = weightedPick(pool.length ? pool : data);
 
-      englishText.textContent = examMode ? '••••••••••' : current.ESP;
+      englishText.innerHTML = examMode ? '••••••••••' : current.ESP;
       translationText.textContent = current.PTBR;
       translationText.classList.add('hidden');
+      feedback.textContent = '';
     }
 
     /* =======================
-       TTS
+       STT + ANÁLISE
     ======================= */
 
-    function speak() {
-      if (!current) return;
-      speechSynthesis.cancel();
-
-      const u = new SpeechSynthesisUtterance(current.ESP);
-      u.lang = 'es-ES';
-      if (spanishVoice) u.voice = spanishVoice;
-      u.rate = 0.9;
-      speechSynthesis.speak(u);
+    function normalize(text) {
+      return text.toLowerCase()
+        .replace(/[^a-záéíóúüñ ]/gi, '')
+        .replace(/\s+/g, ' ')
+        .trim();
     }
 
-    /* =======================
-       STT
-    ======================= */
+    function similarity(a, b) {
+      let same = 0;
+      for (let i = 0; i < Math.min(a.length, b.length); i++) {
+        if (a[i] === b[i]) same++;
+      }
+      return same / Math.max(a.length, b.length);
+    }
+
+    function highlight(target, spoken) {
+      const t = target.split(' ');
+      const s = spoken.split(' ');
+
+      return t.map((w, i) => {
+        const score = similarity(w, s[i] || '');
+        if (score >= 0.8) return `<span>${w}</span>`;
+        return `<span class="text-red-400 underline cursor-pointer" data-word="${w}">${w}</span>`;
+      }).join(' ');
+    }
 
     function listen() {
       const SR = window.webkitSpeechRecognition;
-      if (!SR) return;
+      if (!SR) {
+        feedback.textContent = 'STT não suportado neste navegador.';
+        return;
+      }
 
       const rec = new SR();
       rec.lang = 'es-ES';
+      rec.maxAlternatives = 1;
+
+      feedback.textContent = '🎙️ Ouvindo...';
+
       rec.onresult = e => {
-        const spoken = e.results[0][0].transcript.toLowerCase();
-        if (spoken === current.ESP.toLowerCase()) {
+        const spoken = normalize(e.results[0][0].transcript);
+        const target = normalize(current.ESP);
+        const score = similarity(spoken, target);
+
+        englishText.innerHTML = highlight(target, spoken);
+
+        if (score >= 0.75) {
+          feedback.textContent = '✅ Boa pronúncia';
           stats.hits++;
+          stats.weights[current.ESP] = Math.max(1, (stats.weights[current.ESP] || 1) - 1);
+          adjustLevel(true);
         } else {
+          feedback.textContent = '❌ Precisa melhorar';
           stats.errors++;
+          stats.weights[current.ESP] = (stats.weights[current.ESP] || 1) + 2;
+          adjustLevel(false);
         }
+
         save();
       };
+
       rec.start();
     }
+
+    /* =======================
+       PROGRESSÃO CEFR
+    ======================= */
+
+    function adjustLevel(ok) {
+      let idx = levels.indexOf(stats.level);
+      if (ok && idx < levels.length - 1) idx++;
+      if (!ok && idx > 0) idx--;
+      stats.level = levels[idx];
+    }
+
+    /* =======================
+       UI + PERSISTÊNCIA
+    ======================= */
 
     function updateUI() {
       hitsEl.textContent = stats.hits;
@@ -176,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.getElementById('resetBtn').onclick = async () => {
+      if (!confirm('Resetar progresso?')) return;
       stats = { level: 'A1', hits: 0, errors: 0, weights: {} };
       await save();
       nextSentence();
