@@ -16,35 +16,75 @@
 
 <body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
 
-<div class="w-full max-w-xl bg-zinc-800 p-6 rounded space-y-6">
+<div class="w-full max-w-xl bg-zinc-800 p-6 rounded-2xl shadow-lg space-y-6">
 
-<header class="flex justify-between">
-  <h1 class="font-semibold">Spanish Trainer</h1>
-  <button id="logoutBtn" class="bg-red-600 px-3 py-1 rounded">Sair</button>
-</header>
+  <!-- HEADER -->
+  <header class="flex justify-between items-center">
+    <h1 class="text-lg font-semibold">Spanish Trainer</h1>
 
-<p id="englishText" class="text-2xl text-center"></p>
-<p id="translationText" class="text-center text-zinc-400 hidden"></p>
-<p id="levelText" class="text-center text-sm"></p>
+    <button id="logoutBtn"
+      class="bg-red-600 hover:bg-red-500 px-3 py-2 rounded-lg text-sm transition">
+      Sair
+    </button>
+  </header>
 
-<div class="flex justify-center gap-2 flex-wrap">
-  <button id="playBtn">🔊 Ouvir</button>
-  <button id="micBtn">🎤 Falar</button>
-  <button id="translateBtn">🇧🇷 Tradução</button>
-  <button id="nextBtn">➡️ Próxima</button>
-</div>
+  <!-- TEXTO -->
+  <div class="text-center space-y-2">
+    <p id="englishText" class="text-2xl font-medium"></p>
+    <p id="translationText" class="text-zinc-400 hidden"></p>
+    <p id="levelText" class="text-sm text-zinc-500"></p>
+  </div>
 
-<p class="text-center text-sm">
-  ✅ <span id="hits">0</span> | ❌ <span id="errors">0</span>
-</p>
+  <!-- BOTÕES PRINCIPAIS -->
+  <div class="flex justify-center gap-3 flex-wrap">
+    <button id="playBtn"
+      class="bg-zinc-700 hover:bg-zinc-600 px-4 py-2 rounded-lg transition">
+      🔊 Ouvir
+    </button>
 
-<div class="flex justify-between text-sm">
-  <button id="toggleDataset">Dataset</button>
-  <button id="examModeBtn">Modo exame</button>
-  <button id="resetBtn" class="text-red-400">Resetar</button>
-</div>
+    <button id="micBtn"
+      class="bg-zinc-700 hover:bg-zinc-600 px-4 py-2 rounded-lg transition">
+      🎤 Falar
+    </button>
 
-<p id="feedback" class="text-center"></p>
+    <button id="translateBtn"
+      class="bg-zinc-700 hover:bg-zinc-600 px-4 py-2 rounded-lg transition">
+      🇧🇷 Tradução
+    </button>
+
+    <button id="nextBtn"
+      class="bg-zinc-700 hover:bg-zinc-600 px-4 py-2 rounded-lg transition">
+      ➡️ Próxima
+    </button>
+  </div>
+
+  <!-- FEEDBACK -->
+  <div class="text-center text-sm space-y-1">
+    <p id="feedback"></p>
+    <p>
+      ✅ <span id="hits">0</span> |
+      ❌ <span id="errors">0</span>
+    </p>
+  </div>
+
+  <!-- CONTROLES -->
+  <div class="flex justify-between flex-wrap gap-2 text-sm">
+
+    <button id="toggleDataset"
+      class="bg-zinc-700 hover:bg-zinc-600 px-3 py-2 rounded-lg transition">
+      Dataset
+    </button>
+
+    <button id="examModeBtn"
+      class="bg-zinc-700 hover:bg-zinc-600 px-3 py-2 rounded-lg transition">
+      Modo exame
+    </button>
+
+    <button id="resetBtn"
+      class="text-red-400 hover:text-red-300 px-3 py-2 transition">
+      Resetar
+    </button>
+  </div>
 
 </div>
 
