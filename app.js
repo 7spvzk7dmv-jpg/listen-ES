@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
      AUTH GATE (ÚNICO)
   ======================= */
 
-  onAuth(async user => {
+  firebase.auth().onAuthStateChanged(user => {
     if (!user) {
       location.href = 'login.html';
       return;
     }
-
     initApp(user.uid);
   });
 
@@ -26,15 +25,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-    let datasetKey = (await loadUserData(uid, 'dataset')) || 'frases';
-    let examMode = (await loadUserData(uid, 'examMode')) || false;
+    /* =======================
+       ESTADO (COM FALLBACK)
+    ======================= */
 
-    let stats = (await loadUserData(uid, 'stats')) || {
+    async function safeLoad(key, fallback) {
+      try {
+        return await loadUserData(uid, key) ?? fallback;
+      } catch {
+        const v = localStorage.getItem(`${uid}_${key}`);
+        return v ? JSON.parse(v) : fallback;
+      }
+    }
+
+    async function safeSave(key, value) {
+      try {
+        await saveUserData(uid, key, value);
+      } catch {
+        localStorage.setItem(`${uid}_${key}`, JSON.stringify(value));
+      }
+    }
+
+    let datasetKey = await safeLoad('dataset', 'frases');
+    let examMode = await safeLoad('examMode', false);
+
+    let stats = await safeLoad('stats', {
       level: 'A1',
       hits: 0,
       errors: 0,
       weights: {}
-    };
+    });
 
     let data = [];
     let current = null;
@@ -71,12 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function speak(text) {
       if (!text) return;
       speechSynthesis.cancel();
+      speechSynthesis.resume();
 
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'es-ES';
       if (spanishVoice) u.voice = spanishVoice;
       u.rate = 0.9;
-      u.pitch = 1;
+      u.pitch = 1.0;
 
       speechSynthesis.speak(u);
     }
@@ -113,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* =======================
-       STT + AVALIAÇÃO
+       STT + ANÁLISE
     ======================= */
 
     function normalize(text) {
@@ -172,23 +193,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (score >= 0.75) {
           feedback.textContent = '✅ Boa pronúncia';
           stats.hits++;
-          stats.weights[current.ESP] = Math.max(1, (stats.weights[current.ESP] || 1) - 1);
+          stats.weights[current.ESP] =
+            Math.max(1, (stats.weights[current.ESP] || 1) - 1);
           adjustLevel(true);
         } else {
           feedback.textContent = '❌ Precisa melhorar';
           stats.errors++;
-          stats.weights[current.ESP] = (stats.weights[current.ESP] || 1) + 2;
+          stats.weights[current.ESP] =
+            (stats.weights[current.ESP] || 1) + 2;
           adjustLevel(false);
         }
 
-        saveAll();
+        persist();
       };
 
       rec.start();
     }
 
     /* =======================
-       CEFR
+       CEFR DINÂMICO
     ======================= */
 
     function adjustLevel(ok) {
@@ -210,11 +233,11 @@ document.addEventListener('DOMContentLoaded', () => {
       examModeBtn.textContent = `Modo exame: ${examMode ? 'ON' : 'OFF'}`;
     }
 
-    async function saveAll() {
+    async function persist() {
       updateUI();
-      await saveUserData(uid, 'stats', stats);
-      await saveUserData(uid, 'dataset', datasetKey);
-      await saveUserData(uid, 'examMode', examMode);
+      await safeSave('stats', stats);
+      await safeSave('dataset', datasetKey);
+      await safeSave('examMode', examMode);
     }
 
     /* =======================
@@ -229,25 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toggleDatasetBtn.onclick = async () => {
       datasetKey = datasetKey === 'frases' ? 'palavras' : 'frases';
-      await saveAll();
+      await persist();
       await loadDataset();
     };
 
     examModeBtn.onclick = async () => {
       examMode = !examMode;
-      await saveAll();
+      await persist();
       nextSentence();
     };
 
     document.getElementById('resetBtn').onclick = async () => {
       if (!confirm('Resetar progresso?')) return;
       stats = { level: 'A1', hits: 0, errors: 0, weights: {} };
-      await saveAll();
+      await persist();
       nextSentence();
     };
 
     document.getElementById('logoutBtn').onclick = async () => {
-      await logout();
+      await firebase.auth().signOut();
       location.href = 'login.html';
     };
 
