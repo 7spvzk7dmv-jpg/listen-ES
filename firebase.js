@@ -27,7 +27,9 @@ let db = null;
   auth = firebase.auth();
   db = firebase.firestore();
 
-  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+  // 🔐 Persistência explícita (Safari)
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .catch(() => {});
 })();
 
 /* =======================
@@ -42,18 +44,29 @@ function registerEmail(email, password) {
   return auth.createUserWithEmailAndPassword(email, password);
 }
 
-function loginGooglePopup() {
+/**
+ * 🔑 Google login robusto:
+ * 1) tenta popup
+ * 2) se Safari bloquear, cai para redirect
+ */
+async function loginGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({ prompt: 'select_account' });
-  return auth.signInWithPopup(provider);
+
+  try {
+    return await auth.signInWithPopup(provider);
+  } catch (e) {
+    console.warn('Popup bloqueado, usando redirect:', e.code);
+    return auth.signInWithRedirect(provider);
+  }
 }
 
 function logout() {
   return auth.signOut();
 }
 
-function onAuth(cb) {
-  auth.onAuthStateChanged(cb);
+function onAuth(callback) {
+  auth.onAuthStateChanged(callback);
 }
 
 /* =======================
