@@ -7,6 +7,7 @@ let db = null;
 let currentUser = null;
 
 (function initFirebase() {
+
   if (typeof firebase === 'undefined') {
     console.error('Firebase CDN não carregou');
     return;
@@ -31,6 +32,18 @@ let currentUser = null;
   auth.onAuthStateChanged(user => {
     currentUser = user || null;
   });
+
+  // 🔑 FUNDAMENTAL PARA GOOGLE LOGIN NO SAFARI
+  auth.getRedirectResult()
+    .then(result => {
+      if (result.user) {
+        currentUser = result.user;
+      }
+    })
+    .catch(err => {
+      console.warn('Erro redirect Google:', err);
+    });
+
 })();
 
 /* =======================
@@ -45,10 +58,10 @@ function registerEmail(email, password) {
   return auth.createUserWithEmailAndPassword(email, password);
 }
 
-function loginGoogle() {
+function loginGoogleRedirect() {
   const provider = new firebase.auth.GoogleAuthProvider();
   provider.setCustomParameters({ prompt: 'select_account' });
-  return auth.signInWithPopup(provider);
+  return auth.signInWithRedirect(provider);
 }
 
 function logout() {
@@ -84,8 +97,7 @@ async function saveUserData(key, value) {
 
   try {
     await userDoc().set({ [key]: value }, { merge: true });
-  } catch (e) {
-    console.warn('Firestore falhou, usando localStorage');
+  } catch {
     localStorage.setItem(key, JSON.stringify(value));
   }
 }
@@ -101,9 +113,7 @@ async function loadUserData(key) {
     if (snap.exists && snap.data()[key] !== undefined) {
       return snap.data()[key];
     }
-  } catch (e) {
-    console.warn('Firestore falhou, lendo localStorage');
-  }
+  } catch {}
 
   const v = localStorage.getItem(key);
   return v ? JSON.parse(v) : null;
