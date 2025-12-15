@@ -4,19 +4,32 @@
   <meta charset="UTF-8" />
   <title>Spanish Pronunciation Trainer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="firebase.js"></script>
 </head>
 
-<body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
+<body
+  class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4"
+  onload="requireAuth()"
+>
 
   <div class="w-full max-w-xl bg-zinc-800 rounded-2xl shadow-lg p-6 space-y-6">
 
     <header class="flex justify-between items-center">
       <h1 class="text-xl font-semibold">Spanish Trainer</h1>
-      <button id="toggleDataset"
-        class="text-sm bg-zinc-700 px-3 py-1 rounded hover:bg-zinc-600 transition">
-        Dataset: frases
-      </button>
+
+      <div class="flex gap-2">
+        <button id="toggleDataset"
+          class="text-sm bg-zinc-700 px-3 py-1 rounded hover:bg-zinc-600 transition">
+          Dataset: frases
+        </button>
+
+        <button id="logoutBtn"
+          class="text-sm bg-red-600 px-3 py-1 rounded hover:bg-red-500 transition">
+          Sair
+        </button>
+      </div>
     </header>
 
     <div class="text-center space-y-3">
@@ -26,10 +39,18 @@
     </div>
 
     <div class="flex justify-center gap-3 flex-wrap">
-      <button id="playBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">🔊 Ouvir</button>
-      <button id="micBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">🎤 Falar</button>
-      <button id="translateBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">🇧🇷 Tradução</button>
-      <button id="nextBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">➡️ Próxima</button>
+      <button id="playBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
+        🔊 Ouvir
+      </button>
+      <button id="micBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
+        🎤 Falar
+      </button>
+      <button id="translateBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
+        🇧🇷 Tradução
+      </button>
+      <button id="nextBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
+        ➡️ Próxima
+      </button>
     </div>
 
     <div class="text-center text-sm space-y-1">
@@ -44,10 +65,24 @@
       <button id="resetBtn" class="text-red-400 hover:underline">
         Resetar progresso
       </button>
+
+      <button id="examModeBtn" class="text-blue-400 hover:underline">
+        Modo exame: OFF
+      </button>
     </div>
 
   </div>
 
-  <script src="app.js"></script>
+<script>
+  document.getElementById('logoutBtn').onclick = async () => {
+    try {
+      await logout();
+    } finally {
+      window.location.href = 'login.html';
+    }
+  };
+</script>
+
+<script src="app.js"></script>
 </body>
 </html>
