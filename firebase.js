@@ -5,6 +5,7 @@
 let auth = null;
 let db = null;
 let currentUser = null;
+let authReady = false;
 
 (function initFirebase() {
 
@@ -29,24 +30,21 @@ let currentUser = null;
   auth = firebase.auth();
   db = firebase.firestore();
 
-  /* 🔐 FORÇA persistência (ESSENCIAL no Safari) */
   auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     .catch(err => console.warn('Persistência falhou:', err));
 
   auth.onAuthStateChanged(user => {
     currentUser = user || null;
+    authReady = true;
   });
 
-  /* 🔁 TRATA retorno do Google Redirect */
   auth.getRedirectResult()
     .then(result => {
       if (result.user) {
         currentUser = result.user;
       }
     })
-    .catch(err => {
-      console.warn('Erro no redirect Google:', err);
-    });
+    .catch(err => console.warn('Redirect error:', err));
 
 })();
 
@@ -76,12 +74,16 @@ function getUser() {
   return currentUser;
 }
 
+/* 🔐 AGUARDA O AUTH ESTABILIZAR */
 function requireAuth() {
-  auth.onAuthStateChanged(user => {
-    if (!user) {
+  const wait = setInterval(() => {
+    if (!authReady) return;
+
+    clearInterval(wait);
+    if (!currentUser) {
       window.location.href = 'login.html';
     }
-  });
+  }, 50);
 }
 
 /* =======================
