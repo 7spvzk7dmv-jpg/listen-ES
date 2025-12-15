@@ -14,8 +14,7 @@
   <script src="firebase.js"></script>
 </head>
 
-<body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4"
-      onload="requireAuth()">
+<body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
 
   <div class="w-full max-w-xl bg-zinc-800 rounded-2xl p-6 space-y-6">
 
@@ -51,6 +50,9 @@
   </div>
 
 <script>
+  // 🔐 Só agora valida autenticação
+  requireAuth();
+
   logoutBtn.onclick = async () => {
     await logout();
     window.location.href = 'login.html';
