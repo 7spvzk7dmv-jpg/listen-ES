@@ -16,47 +16,35 @@
 
 <body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
 
-  <div class="w-full max-w-sm bg-zinc-800 rounded-2xl p-6 space-y-5">
+<div class="w-full max-w-sm bg-zinc-800 p-6 rounded space-y-4">
+  <h1 class="text-xl text-center">Spanish Trainer</h1>
 
-    <h1 class="text-xl font-semibold text-center">Spanish Trainer</h1>
+  <input id="email" type="email" placeholder="Email" class="w-full p-2 rounded bg-zinc-700">
+  <input id="password" type="password" placeholder="Senha" class="w-full p-2 rounded bg-zinc-700">
 
-    <input id="email" type="email" placeholder="Email"
-      class="w-full bg-zinc-700 px-3 py-2 rounded">
+  <button id="loginBtn" class="w-full bg-emerald-600 p-2 rounded">Entrar</button>
+  <button id="registerBtn" class="w-full bg-zinc-600 p-2 rounded">Cadastrar</button>
 
-    <input id="password" type="password" placeholder="Senha"
-      class="w-full bg-zinc-700 px-3 py-2 rounded">
+  <button id="googleBtn" class="w-full bg-white text-black p-2 rounded">
+    Entrar com Google
+  </button>
 
-    <div class="flex gap-2">
-      <button id="loginBtn" class="flex-1 bg-emerald-600 px-4 py-2 rounded">
-        Entrar
-      </button>
-      <button id="registerBtn" class="flex-1 bg-zinc-600 px-4 py-2 rounded">
-        Cadastrar
-      </button>
-    </div>
-
-    <button id="googleBtn"
-      class="w-full bg-white text-zinc-900 flex items-center justify-center gap-2 px-4 py-2 rounded">
-      <img src="https://developers.google.com/identity/images/g-logo.png" class="w-5 h-5">
-      Entrar com Google
-    </button>
-
-    <p id="feedback" class="text-sm text-center text-red-400"></p>
-  </div>
+  <p id="feedback" class="text-center text-red-400 text-sm"></p>
+</div>
 
 <script>
-  const emailEl = document.getElementById('email');
-  const passEl = document.getElementById('password');
   const feedback = document.getElementById('feedback');
 
+  // 🔐 ÚNICO LUGAR QUE DECIDE REDIRECT
   firebase.auth().onAuthStateChanged(user => {
-    if (user) window.location.href = 'index.html';
+    if (user) {
+      window.location.href = 'index.html';
+    }
   });
 
   loginBtn.onclick = async () => {
     try {
-      await loginEmail(emailEl.value, passEl.value);
-      window.location.href = 'index.html';
+      await loginEmail(email.value, password.value);
     } catch (e) {
       feedback.textContent = e.message;
     }
@@ -64,14 +52,12 @@
 
   registerBtn.onclick = async () => {
     try {
-      await registerEmail(emailEl.value, passEl.value);
-      window.location.href = 'index.html';
+      await registerEmail(email.value, password.value);
     } catch (e) {
       feedback.textContent = e.message;
     }
   };
 
-  // ✅ Google SEM popup, SEM Safari quebrar
   googleBtn.onclick = () => {
     loginGoogleRedirect();
   };
