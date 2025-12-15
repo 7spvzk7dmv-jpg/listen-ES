@@ -4,8 +4,6 @@
 
 let auth = null;
 let db = null;
-let currentUser = null;
-let authReady = false;
 
 (function initFirebase() {
 
@@ -30,26 +28,14 @@ let authReady = false;
   auth = firebase.auth();
   db = firebase.firestore();
 
+  // 🔐 Persistência explícita (Safari)
   auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-    .catch(err => console.warn('Persistência falhou:', err));
-
-  auth.onAuthStateChanged(user => {
-    currentUser = user || null;
-    authReady = true;
-  });
-
-  auth.getRedirectResult()
-    .then(result => {
-      if (result.user) {
-        currentUser = result.user;
-      }
-    })
-    .catch(err => console.warn('Redirect error:', err));
+    .catch(() => {});
 
 })();
 
 /* =======================
-   AUTH
+   AUTH HELPERS
 ======================= */
 
 function loginEmail(email, password) {
@@ -70,57 +56,30 @@ function logout() {
   return auth.signOut();
 }
 
-function getUser() {
-  return currentUser;
-}
-
-/* 🔐 AGUARDA O AUTH ESTABILIZAR */
-function requireAuth() {
-  const wait = setInterval(() => {
-    if (!authReady) return;
-
-    clearInterval(wait);
-    if (!currentUser) {
-      window.location.href = 'login.html';
-    }
-  }, 50);
-}
-
 /* =======================
    FIRESTORE + FALLBACK
 ======================= */
 
-function userDoc() {
-  if (!currentUser) return null;
-  return db.collection('users').doc(currentUser.uid);
+function userDoc(uid) {
+  return db.collection('users').doc(uid);
 }
 
-async function saveUserData(key, value) {
-  if (!currentUser) {
-    localStorage.setItem(key, JSON.stringify(value));
-    return;
-  }
-
+async function saveUserData(uid, key, value) {
   try {
-    await userDoc().set({ [key]: value }, { merge: true });
+    await userDoc(uid).set({ [key]: value }, { merge: true });
   } catch {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(`${uid}_${key}`, JSON.stringify(value));
   }
 }
 
-async function loadUserData(key) {
-  if (!currentUser) {
-    const v = localStorage.getItem(key);
-    return v ? JSON.parse(v) : null;
-  }
-
+async function loadUserData(uid, key) {
   try {
-    const snap = await userDoc().get();
+    const snap = await userDoc(uid).get();
     if (snap.exists && snap.data()[key] !== undefined) {
       return snap.data()[key];
     }
   } catch {}
 
-  const v = localStorage.getItem(key);
+  const v = localStorage.getItem(`${uid}_${key}`);
   return v ? JSON.parse(v) : null;
 }
