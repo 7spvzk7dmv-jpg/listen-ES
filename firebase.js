@@ -1,27 +1,17 @@
-<!-- firebase.js -->
-<script>
 /* =======================
-   FIREBASE CORE (NO MODULE)
+   FIREBASE INIT (NO MODULE)
 ======================= */
 
-// Firebase CDN (compat — Safari safe)
-document.write(`
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"><\/script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"><\/script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"><\/script>
-`);
-
-let firebaseReady = false;
 let auth = null;
 let db = null;
 let currentUser = null;
 
-/* =======================
-   INIT
-======================= */
+(function initFirebase() {
 
-function initFirebase() {
-  if (firebaseReady) return;
+  if (typeof firebase === 'undefined') {
+    console.error('Firebase CDN não carregou');
+    return;
+  }
 
   const firebaseConfig = {
     apiKey: "AIzaSyC0tOIKC39gpIBQORVMNsXDKUSeVqNN2_U",
@@ -32,7 +22,10 @@ function initFirebase() {
     appId: "1:665829650392:web:14327e1f37f3c32f8c4cad"
   };
 
-  firebase.initializeApp(firebaseConfig);
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
   auth = firebase.auth();
   db = firebase.firestore();
 
@@ -40,8 +33,7 @@ function initFirebase() {
     currentUser = user || null;
   });
 
-  firebaseReady = true;
-}
+})();
 
 /* =======================
    AUTH
@@ -86,39 +78,3 @@ async function saveUserData(key, value) {
 
   try {
     await userDoc().set({ [key]: value }, { merge: true });
-  } catch (e) {
-    console.warn('Firestore falhou, usando localStorage', e);
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-}
-
-async function loadUserData(key) {
-  if (!currentUser) {
-    return JSON.parse(localStorage.getItem(key));
-  }
-
-  try {
-    const snap = await userDoc().get();
-    return snap.exists ? snap.data()[key] : null;
-  } catch (e) {
-    console.warn('Firestore falhou, usando localStorage', e);
-    return JSON.parse(localStorage.getItem(key));
-  }
-}
-
-/* =======================
-   ROUTE GUARD
-======================= */
-
-function requireAuth() {
-  initFirebase();
-
-  auth.onAuthStateChanged(user => {
-    if (!user) {
-      window.location.href = 'login.html';
-    }
-  });
-}
-
-initFirebase();
-</script>
