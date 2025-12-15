@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login • Spanish Trainer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="firebase.js"></script>
+</head>
+
+<body class="bg-zinc-900 text-zinc-100 min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-sm bg-zinc-800 rounded-2xl shadow-lg p-6 space-y-5">
+
+    <h1 class="text-xl font-semibold text-center">Spanish Trainer</h1>
+
+    <div class="space-y-3">
+      <input id="email" type="email" placeholder="Email"
+        class="w-full bg-zinc-700 px-3 py-2 rounded focus:outline-none" />
+
+      <input id="password" type="password" placeholder="Senha"
+        class="w-full bg-zinc-700 px-3 py-2 rounded focus:outline-none" />
+    </div>
+
+    <div class="flex gap-2">
+      <button id="loginBtn"
+        class="flex-1 bg-emerald-600 hover:bg-emerald-500 transition px-4 py-2 rounded">
+        Entrar
+      </button>
+
+      <button id="registerBtn"
+        class="flex-1 bg-zinc-600 hover:bg-zinc-500 transition px-4 py-2 rounded">
+        Cadastrar
+      </button>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <div class="flex-1 h-px bg-zinc-600"></div>
+      <span class="text-xs text-zinc-400">ou</span>
+      <div class="flex-1 h-px bg-zinc-600"></div>
+    </div>
+
+    <button id="googleBtn"
+      class="w-full bg-white text-zinc-900 flex items-center justify-center gap-2 px-4 py-2 rounded hover:bg-zinc-200 transition">
+      <img src="https://developers.google.com/identity/images/g-logo.png"
+           alt="Google" class="w-5 h-5">
+      Entrar com Google
+    </button>
+
+    <p id="feedback" class="text-sm text-center text-red-400"></p>
+
+  </div>
+
+<script>
+  const emailEl = document.getElementById('email');
+  const passEl = document.getElementById('password');
+  const feedback = document.getElementById('feedback');
+
+  document.getElementById('loginBtn').onclick = async () => {
+    feedback.textContent = '';
+    try {
+      await loginEmail(emailEl.value, passEl.value);
+      window.location.href = 'index.html';
+    } catch (e) {
+      feedback.textContent = traduzErro(e.code);
+    }
+  };
+
+  document.getElementById('registerBtn').onclick = async () => {
+    feedback.textContent = '';
+    try {
+      await registerEmail(emailEl.value, passEl.value);
+      window.location.href = 'index.html';
+    } catch (e) {
+      feedback.textContent = traduzErro(e.code);
+    }
+  };
+
+  document.getElementById('googleBtn').onclick = async () => {
+    feedback.textContent = '';
+    try {
+      await loginGoogle();
+      window.location.href = 'index.html';
+    } catch (e) {
+      feedback.textContent = 'Falha no login Google';
+    }
+  };
+
+  function traduzErro(code) {
+    if (!code) return 'Erro desconhecido';
+    if (code.includes('user-not-found')) return 'Usuário não encontrado';
+    if (code.includes('wrong-password')) return 'Senha incorreta';
+    if (code.includes('email-already')) return 'Email já cadastrado';
+    if (code.includes('weak-password')) return 'Senha muito fraca';
+    if (code.includes('invalid-email')) return 'Email inválido';
+    return 'Erro ao autenticar';
+  }
+</script>
+
+</body>
+</html>
