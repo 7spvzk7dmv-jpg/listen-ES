@@ -7,7 +7,6 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -21,41 +20,28 @@
 
     <h1 class="text-xl font-semibold text-center">Spanish Trainer</h1>
 
-    <div class="space-y-3">
-      <input id="email" type="email" placeholder="Email"
-        class="w-full bg-zinc-700 px-3 py-2 rounded focus:outline-none" />
+    <input id="email" type="email" placeholder="Email"
+      class="w-full bg-zinc-700 px-3 py-2 rounded" />
 
-      <input id="password" type="password" placeholder="Senha"
-        class="w-full bg-zinc-700 px-3 py-2 rounded focus:outline-none" />
-    </div>
+    <input id="password" type="password" placeholder="Senha"
+      class="w-full bg-zinc-700 px-3 py-2 rounded" />
 
     <div class="flex gap-2">
-      <button id="loginBtn"
-        class="flex-1 bg-emerald-600 hover:bg-emerald-500 transition px-4 py-2 rounded">
+      <button id="loginBtn" class="flex-1 bg-emerald-600 px-4 py-2 rounded">
         Entrar
       </button>
-
-      <button id="registerBtn"
-        class="flex-1 bg-zinc-600 hover:bg-zinc-500 transition px-4 py-2 rounded">
+      <button id="registerBtn" class="flex-1 bg-zinc-600 px-4 py-2 rounded">
         Cadastrar
       </button>
     </div>
 
-    <div class="flex items-center gap-2">
-      <div class="flex-1 h-px bg-zinc-600"></div>
-      <span class="text-xs text-zinc-400">ou</span>
-      <div class="flex-1 h-px bg-zinc-600"></div>
-    </div>
-
     <button id="googleBtn"
-      class="w-full bg-white text-zinc-900 flex items-center justify-center gap-2 px-4 py-2 rounded hover:bg-zinc-200 transition">
-      <img src="https://developers.google.com/identity/images/g-logo.png"
-           alt="Google" class="w-5 h-5">
+      class="w-full bg-white text-zinc-900 flex items-center justify-center gap-2 px-4 py-2 rounded">
+      <img src="https://developers.google.com/identity/images/g-logo.png" class="w-5 h-5">
       Entrar com Google
     </button>
 
     <p id="feedback" class="text-sm text-center text-red-400"></p>
-
   </div>
 
 <script>
@@ -63,54 +49,37 @@
   const passEl = document.getElementById('password');
   const feedback = document.getElementById('feedback');
 
-  // 🔐 Se já estiver logado, sai direto
   firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      window.location.href = 'index.html';
-    }
+    if (user) window.location.href = 'index.html';
   });
 
-  document.getElementById('loginBtn').onclick = async () => {
-    feedback.textContent = '';
+  loginBtn.onclick = async () => {
     try {
       await loginEmail(emailEl.value, passEl.value);
       window.location.href = 'index.html';
     } catch (e) {
-      feedback.textContent = traduzErro(e.code);
+      feedback.textContent = e.message;
     }
   };
 
-  document.getElementById('registerBtn').onclick = async () => {
-    feedback.textContent = '';
+  registerBtn.onclick = async () => {
     try {
       await registerEmail(emailEl.value, passEl.value);
       window.location.href = 'index.html';
     } catch (e) {
-      feedback.textContent = traduzErro(e.code);
+      feedback.textContent = e.message;
     }
   };
 
-  document.getElementById('googleBtn').onclick = async () => {
-    feedback.textContent = '';
+  googleBtn.onclick = async () => {
     try {
-      await loginGoogle(); // popup (desktop)
+      await loginGoogle();
       window.location.href = 'index.html';
     } catch {
       const provider = new firebase.auth.GoogleAuthProvider();
-      provider.setCustomParameters({ prompt: 'select_account' });
-      firebase.auth().signInWithRedirect(provider); // Safari
+      firebase.auth().signInWithRedirect(provider);
     }
   };
-
-  function traduzErro(code) {
-    if (!code) return 'Erro desconhecido';
-    if (code.includes('user-not-found')) return 'Usuário não encontrado';
-    if (code.includes('wrong-password')) return 'Senha incorreta';
-    if (code.includes('email-already')) return 'Email já cadastrado';
-    if (code.includes('weak-password')) return 'Senha muito fraca';
-    if (code.includes('invalid-email')) return 'Email inválido';
-    return 'Erro ao autenticar';
-  }
 </script>
 
 </body>
