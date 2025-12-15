@@ -42,41 +42,25 @@
     </div>
 
     <div class="flex justify-center gap-3 flex-wrap">
-      <button id="playBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
-        🔊 Ouvir
-      </button>
-      <button id="micBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
-        🎤 Falar
-      </button>
-      <button id="translateBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
-        🇧🇷 Tradução
-      </button>
-      <button id="nextBtn" class="bg-zinc-700 px-4 py-2 rounded-lg hover:bg-zinc-600">
-        ➡️ Próxima
-      </button>
+      <button id="playBtn" class="bg-zinc-700 px-4 py-2 rounded-lg">🔊 Ouvir</button>
+      <button id="micBtn" class="bg-zinc-700 px-4 py-2 rounded-lg">🎤 Falar</button>
+      <button id="translateBtn" class="bg-zinc-700 px-4 py-2 rounded-lg">🇧🇷 Tradução</button>
+      <button id="nextBtn" class="bg-zinc-700 px-4 py-2 rounded-lg">➡️ Próxima</button>
     </div>
 
-    <div class="text-center text-sm space-y-1">
+    <div class="text-center text-sm">
       <p id="feedback"></p>
-      <p>
-        ✅ Acertos: <span id="hits">0</span> |
-        ❌ Erros: <span id="errors">0</span>
-      </p>
+      <p>✅ <span id="hits">0</span> | ❌ <span id="errors">0</span></p>
     </div>
 
-    <div class="flex justify-between text-sm">
-      <button id="resetBtn" class="text-red-400 hover:underline">
-        Resetar progresso
-      </button>
-
-      <button id="examModeBtn" class="text-blue-400 hover:underline">
-        Modo exame
-      </button>
-    </div>
+    <button id="resetBtn" class="text-red-400 hover:underline">
+      Resetar progresso
+    </button>
 
   </div>
 
   <!-- App principal -->
   <script src="app.js"></script>
+
 </body>
 </html>
