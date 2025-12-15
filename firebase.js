@@ -29,11 +29,15 @@ let currentUser = null;
   auth = firebase.auth();
   db = firebase.firestore();
 
+  /* 🔐 FORÇA persistência (ESSENCIAL no Safari) */
+  auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .catch(err => console.warn('Persistência falhou:', err));
+
   auth.onAuthStateChanged(user => {
     currentUser = user || null;
   });
 
-  // 🔑 FUNDAMENTAL PARA GOOGLE LOGIN NO SAFARI
+  /* 🔁 TRATA retorno do Google Redirect */
   auth.getRedirectResult()
     .then(result => {
       if (result.user) {
@@ -41,7 +45,7 @@ let currentUser = null;
       }
     })
     .catch(err => {
-      console.warn('Erro redirect Google:', err);
+      console.warn('Erro no redirect Google:', err);
     });
 
 })();
