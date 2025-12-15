@@ -1,320 +1,257 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =======================
-     AUTENTICAÇÃO + LOAD (DO FIREBASE)
+     AUTH GATE (ÚNICO)
   ======================= */
 
-  firebase.auth().onAuthStateChanged(async user => {
+  onAuth(async user => {
     if (!user) {
-      window.location.href = 'login.html'; // Redireciona para login se não houver usuário
+      location.href = 'login.html';
       return;
     }
 
-    const userRef = firebase.firestore().doc('users/' + user.uid);
-
-    try {
-      const snap = await userRef.get();
-      if (snap.exists) {
-        const saved = snap.data();
-        stats = saved.stats || stats;
-        datasetKey = saved.datasetKey || datasetKey;
-        examMode = saved.examMode || false;
-      }
-    } catch (e) {
-      console.warn('⚠️ Firestore indisponível, usando memória local');
-    }
-
-    initApp();
+    initApp(user.uid);
   });
 
-  /* =======================
-     CONFIGURAÇÃO GERAL
-  ======================= */
+  async function initApp(uid) {
 
-  const DATASETS = {
-    frases: 'data/frases.json',
-    palavras: 'data/palavras.json'
-  };
+    /* =======================
+       CONFIGURAÇÃO
+    ======================= */
 
-  const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+    const DATASETS = {
+      frases: 'data/frases.json',
+      palavras: 'data/palavras.json'
+    };
 
-  let datasetKey = 'frases';
-  let data = [];
-  let current = null;
+    const levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
 
-  let examMode = false;
+    let datasetKey = (await loadUserData(uid, 'dataset')) || 'frases';
+    let examMode = (await loadUserData(uid, 'examMode')) || false;
 
-  let stats = {
-    level: 'A1',
-    hits: 0,
-    errors: 0,
-    weights: {}
-  };
+    let stats = (await loadUserData(uid, 'stats')) || {
+      level: 'A1',
+      hits: 0,
+      errors: 0,
+      weights: {}
+    };
 
-  let selectedVoice = null;
+    let data = [];
+    let current = null;
+    let spanishVoice = null;
 
-  /* =======================
-     ELEMENTOS DO DOM
-  ======================= */
+    /* =======================
+       DOM
+    ======================= */
 
-  const englishText = document.getElementById('englishText');
-  const translationText = document.getElementById('translationText');
-  const feedback = document.getElementById('feedback');
-  const hitsEl = document.getElementById('hits');
-  const errorsEl = document.getElementById('errors');
-  const levelText = document.getElementById('levelText');
-  const toggleDatasetBtn = document.getElementById('toggleDataset');
-  const examModeBtn = document.getElementById('examModeBtn');
+    const englishText = document.getElementById('englishText');
+    const translationText = document.getElementById('translationText');
+    const feedback = document.getElementById('feedback');
+    const hitsEl = document.getElementById('hits');
+    const errorsEl = document.getElementById('errors');
+    const levelText = document.getElementById('levelText');
+    const toggleDatasetBtn = document.getElementById('toggleDataset');
+    const examModeBtn = document.getElementById('examModeBtn');
 
-  /* =======================
-     INIT (APLICAÇÃO)
-  ======================= */
+    /* =======================
+       TTS (ESPANHOL NATURAL)
+    ======================= */
 
-  function initApp() {
-    initVoices();
-    bindEvents();
-    loadDataset();
-    updateUI();
-  }
-
-  function bindEvents() {
-    document.getElementById('playBtn').addEventListener('click', speakSentence);
-    document.getElementById('micBtn').addEventListener('click', listen);
-    document.getElementById('translateBtn').addEventListener('click', toggleTranslation);
-    document.getElementById('nextBtn').addEventListener('click', nextSentence);
-    document.getElementById('resetBtn').addEventListener('click', resetProgress);
-    toggleDatasetBtn.addEventListener('click', toggleDataset);
-    examModeBtn.addEventListener('click', toggleExamMode);
-  }
-
-  /* =======================
-     VOZ (TTS) — ANDROID / IOS
-  ======================= */
-
-  function initVoices() {
-    const preferred = ['Samantha', 'Daniel', 'Aaron'];
-
-    function pickVoice() {
+    function loadSpanishVoice() {
       const voices = speechSynthesis.getVoices();
-      if (!voices.length) return;
-
-      selectedVoice =
-        voices.find(v => preferred.includes(v.name) && v.lang.startsWith('en')) ||
-        voices.find(v => v.lang === 'en-US') ||
-        voices[0];
+      spanishVoice =
+        voices.find(v => v.lang === 'es-ES' && v.localService) ||
+        voices.find(v => v.lang.startsWith('es')) ||
+        null;
     }
 
-    pickVoice();
-    speechSynthesis.onvoiceschanged = pickVoice;
-  }
+    speechSynthesis.onvoiceschanged = loadSpanishVoice;
+    loadSpanishVoice();
 
-  function speakText(text) {
-    if (!text) return;
-    speechSynthesis.cancel();
-    speechSynthesis.resume();
+    function speak(text) {
+      if (!text) return;
+      speechSynthesis.cancel();
 
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'en-US';
-    if (selectedVoice) u.voice = selectedVoice;
-    u.rate = 0.95;
-    u.pitch = 1.0;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'es-ES';
+      if (spanishVoice) u.voice = spanishVoice;
+      u.rate = 0.9;
+      u.pitch = 1;
 
-    speechSynthesis.speak(u);
-  }
-
-  function speakSentence() {
-    if (!current) return;
-    speakText(current.ENG);
-  }
-
-  function speakWord(word) {
-    speakText(word);
-  }
-
-  /* =======================
-     DATASET
-  ======================= */
-
-  async function loadDataset() {
-    const res = await fetch(DATASETS[datasetKey]);
-    data = await res.json();
-    nextSentence();
-    updateUI();
-  }
-
-  function weightedRandom(items) {
-    const pool = [];
-    items.forEach(item => {
-      const w = stats.weights[item.ENG] || 1;
-      for (let i = 0; i < w; i++) pool.push(item);
-    });
-    return pool[Math.floor(Math.random() * pool.length)];
-  }
-
-  function nextSentence() {
-    const filtered = data.filter(d => d.CEFR === stats.level);
-    current = weightedRandom(filtered.length ? filtered : data);
-
-    englishText.textContent = examMode
-      ? '🎧 Ouça e repita'
-      : current.ENG;
-
-    translationText.textContent = current.PTBR;
-    translationText.classList.add('hidden');
-    feedback.textContent = '';
-  }
-
-  /* =======================
-     PRONÚNCIA (STT)
-  ======================= */
-
-  function normalize(text) {
-    return text
-      .toLowerCase()
-      .replace(/[^a-z']/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
-
-  function similarity(a, b) {
-    let same = 0;
-    for (let i = 0; i < Math.min(a.length, b.length); i++) {
-      if (a[i] === b[i]) same++;
-    }
-    return same / Math.max(a.length, b.length);
-  }
-
-  function highlightDifferences(target, spoken) {
-    const t = target.split(' ');
-    const s = spoken.split(' ');
-
-    return t.map((w, i) => {
-      const score = similarity(w, s[i] || '');
-
-      if (score >= 0.85) return `<span>${w}</span>`;
-
-      const cls =
-        score >= 0.5
-          ? 'text-yellow-400 underline cursor-pointer'
-          : 'text-red-400 underline cursor-pointer';
-
-      return `<span class="${cls}" data-word="${w}">${w}</span>`;
-    }).join(' ');
-  }
-
-  function attachWordListeners() {
-    document.querySelectorAll('[data-word]').forEach(el => {
-      el.addEventListener('click', () => speakWord(el.dataset.word));
-    });
-  }
-
-  function listen() {
-    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SR || !current) {
-      feedback.textContent = '❌ Reconhecimento não suportado';
-      return;
+      speechSynthesis.speak(u);
     }
 
-    const rec = new SR();
-    rec.lang = 'en-US';
-    rec.continuous = false;
-    rec.interimResults = false;
-    rec.maxAlternatives = 1;
+    /* =======================
+       DATASET
+    ======================= */
 
-    rec.onstart = () => feedback.textContent = '🎙️ Ouvindo...';
+    async function loadDataset() {
+      const res = await fetch(DATASETS[datasetKey]);
+      data = await res.json();
+      nextSentence();
+    }
 
-    rec.onresult = e => {
-      const spoken = normalize(e.results[0][0].transcript);
-      const target = normalize(current.ENG);
-      const score = similarity(spoken, target);
+    function weightedPick(list) {
+      const pool = [];
+      list.forEach(item => {
+        const w = stats.weights[item.ESP] || 1;
+        for (let i = 0; i < w; i++) pool.push(item);
+      });
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
 
-      englishText.innerHTML = highlightDifferences(target, spoken);
-      attachWordListeners();
+    function nextSentence() {
+      const pool = data.filter(d => d.CEFR === stats.level);
+      current = weightedPick(pool.length ? pool : data);
 
-      if (score >= 0.75) {
-        feedback.textContent = '✅ Boa pronúncia';
-        stats.hits++;
-        stats.weights[current.ENG] =
-          Math.max(1, (stats.weights[current.ENG] || 1) - 1);
-        adjustLevel(true);
-      } else {
-        feedback.textContent = '❌ Atenção às palavras';
-        stats.errors++;
-        stats.weights[current.ENG] =
-          (stats.weights[current.ENG] || 1) + 2;
-        adjustLevel(false);
+      englishText.innerHTML = examMode ? '🎧 Ouça e repita' : current.ESP;
+      translationText.textContent = current.PTBR;
+      translationText.classList.add('hidden');
+      feedback.textContent = '';
+
+      if (examMode) speak(current.ESP);
+    }
+
+    /* =======================
+       STT + AVALIAÇÃO
+    ======================= */
+
+    function normalize(text) {
+      return text.toLowerCase()
+        .replace(/[^a-záéíóúüñ ]/gi, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function similarity(a, b) {
+      let same = 0;
+      for (let i = 0; i < Math.min(a.length, b.length); i++) {
+        if (a[i] === b[i]) same++;
+      }
+      return same / Math.max(a.length, b.length);
+    }
+
+    function highlight(target, spoken) {
+      const t = target.split(' ');
+      const s = spoken.split(' ');
+
+      return t.map((w, i) => {
+        const score = similarity(w, s[i] || '');
+        if (score >= 0.8) return `<span>${w}</span>`;
+        return `<span class="text-red-400 underline cursor-pointer" data-word="${w}">${w}</span>`;
+      }).join(' ');
+    }
+
+    function attachWordListeners() {
+      document.querySelectorAll('[data-word]').forEach(el => {
+        el.onclick = () => speak(el.dataset.word);
+      });
+    }
+
+    function listen() {
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SR) {
+        feedback.textContent = 'STT não suportado.';
+        return;
       }
 
-      saveAll();
+      const rec = new SR();
+      rec.lang = 'es-ES';
+      rec.maxAlternatives = 1;
+
+      feedback.textContent = '🎙️ Ouvindo...';
+
+      rec.onresult = e => {
+        const spoken = normalize(e.results[0][0].transcript);
+        const target = normalize(current.ESP);
+        const score = similarity(spoken, target);
+
+        englishText.innerHTML = highlight(target, spoken);
+        attachWordListeners();
+
+        if (score >= 0.75) {
+          feedback.textContent = '✅ Boa pronúncia';
+          stats.hits++;
+          stats.weights[current.ESP] = Math.max(1, (stats.weights[current.ESP] || 1) - 1);
+          adjustLevel(true);
+        } else {
+          feedback.textContent = '❌ Precisa melhorar';
+          stats.errors++;
+          stats.weights[current.ESP] = (stats.weights[current.ESP] || 1) + 2;
+          adjustLevel(false);
+        }
+
+        saveAll();
+      };
+
+      rec.start();
+    }
+
+    /* =======================
+       CEFR
+    ======================= */
+
+    function adjustLevel(ok) {
+      let i = levels.indexOf(stats.level);
+      if (ok && i < levels.length - 1) i++;
+      if (!ok && i > 0) i--;
+      stats.level = levels[i];
+    }
+
+    /* =======================
+       UI + PERSISTÊNCIA
+    ======================= */
+
+    function updateUI() {
+      hitsEl.textContent = stats.hits;
+      errorsEl.textContent = stats.errors;
+      levelText.textContent = `Nível: ${stats.level}`;
+      toggleDatasetBtn.textContent = `Dataset: ${datasetKey}`;
+      examModeBtn.textContent = `Modo exame: ${examMode ? 'ON' : 'OFF'}`;
+    }
+
+    async function saveAll() {
       updateUI();
+      await saveUserData(uid, 'stats', stats);
+      await saveUserData(uid, 'dataset', datasetKey);
+      await saveUserData(uid, 'examMode', examMode);
+    }
+
+    /* =======================
+       EVENTOS
+    ======================= */
+
+    document.getElementById('playBtn').onclick = () => speak(current.ESP);
+    document.getElementById('micBtn').onclick = listen;
+    document.getElementById('nextBtn').onclick = nextSentence;
+    document.getElementById('translateBtn').onclick =
+      () => translationText.classList.toggle('hidden');
+
+    toggleDatasetBtn.onclick = async () => {
+      datasetKey = datasetKey === 'frases' ? 'palavras' : 'frases';
+      await saveAll();
+      await loadDataset();
     };
 
-    rec.onerror = () => {
-      feedback.textContent = '⚠️ Erro no reconhecimento de voz';
+    examModeBtn.onclick = async () => {
+      examMode = !examMode;
+      await saveAll();
+      nextSentence();
     };
 
-    rec.start();
-  }
+    document.getElementById('resetBtn').onclick = async () => {
+      if (!confirm('Resetar progresso?')) return;
+      stats = { level: 'A1', hits: 0, errors: 0, weights: {} };
+      await saveAll();
+      nextSentence();
+    };
 
-  /* =======================
-     PROGRESSÃO CEFR
-  ======================= */
+    document.getElementById('logoutBtn').onclick = async () => {
+      await logout();
+      location.href = 'login.html';
+    };
 
-  function adjustLevel(success) {
-    let i = levels.indexOf(stats.level);
-    if (success && i < levels.length - 1) i++;
-    if (!success && i > 0) i--;
-    stats.level = levels[i];
-  }
-
-  /* =======================
-     UI / ESTADO
-  ======================= */
-
-  function toggleTranslation() {
-    translationText.classList.toggle('hidden');
-  }
-
-  function toggleDataset() {
-    datasetKey = datasetKey === 'frases' ? 'palavras' : 'frases';
-    saveAll();
-    loadDataset();
-  }
-
-  function toggleExamMode() {
-    examMode = !examMode;
-    saveAll();
-    nextSentence();
     updateUI();
+    await loadDataset();
   }
-
-  function resetProgress() {
-    if (!confirm('Deseja apagar todo o progresso?')) return;
-
-    stats = { level: 'A1', hits: 0, errors: 0, weights: {} };
-    examMode = false;
-    datasetKey = 'frases';
-
-    saveAll();
-    loadDataset();
-  }
-
-  function updateUI() {
-    hitsEl.textContent = stats.hits;
-    errorsEl.textContent = stats.errors;
-    levelText.textContent = `Nível atual: ${stats.level}`;
-    examModeBtn.textContent = examMode ? '📝 Modo exame: ON' : '📝 Modo exame: OFF';
-    toggleDatasetBtn.textContent = `Dataset: ${datasetKey}`;
-  }
-
-  function saveAll() {
-    if (!firebaseReady || !userRef) return;
-
-    setDoc(userRef, {
-      stats,
-      datasetKey,
-      examMode
-    });
-  }
-
 });
