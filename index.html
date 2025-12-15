@@ -7,7 +7,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Firebase compat (Safari / GitHub Pages safe) -->
+  <!-- Firebase compat -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -23,13 +23,18 @@
       <h1 class="text-xl font-semibold">Spanish Trainer</h1>
 
       <div class="flex gap-2">
+        <button id="examModeBtn"
+          class="text-sm bg-zinc-700 px-3 py-1 rounded hover:bg-zinc-600">
+          📝 Modo exame: OFF
+        </button>
+
         <button id="toggleDataset"
-          class="text-sm bg-zinc-700 px-3 py-1 rounded hover:bg-zinc-600 transition">
-          Dataset
+          class="text-sm bg-zinc-700 px-3 py-1 rounded hover:bg-zinc-600">
+          Dataset: frases
         </button>
 
         <button id="logoutBtn"
-          class="text-sm bg-red-600 px-3 py-1 rounded hover:bg-red-500 transition">
+          class="text-sm bg-red-600 px-3 py-1 rounded hover:bg-red-500">
           Sair
         </button>
       </div>
@@ -59,8 +64,6 @@
 
   </div>
 
-  <!-- App principal -->
   <script src="app.js"></script>
-
 </body>
 </html>
